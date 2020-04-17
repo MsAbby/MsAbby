@@ -1,0 +1,68 @@
+---
+layout:     post
+title:      "vue-cli 解读"
+subtitle:   "Whether:sunny / Mood:am-normal, pm-bad / Especially: 1"
+date:       2020-04-16 14:24:00
+author:     "lsm"
+header-img: "home-bg-o.jpg"
+tags:
+    - 前端开发
+    - 工具
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>
+  </title>
+</head>
+<body>
+  <div class="bg">
+    <div class="tips">Vue-cli配置文件</div>
+    <h2 class="title">1. Vue-cli配置文件</h2>
+    <section class="chaper">
+      <h3 class="sub-title">1.1 config</h3>
+      <div class="detail">
+        <h4 class="detail-title">
+          <span>1.1.1 publicPath</span>
+        </h4>
+        <ul class="ul-detail">
+          <li>
+            1、Type: string
+          </li>
+          <li>
+            2、Default: '/'
+          </li>
+          <li>
+            3、webpack.dev.conf.js配置：
+            <div class="coding">publicPath: config.dev.assetsPublicPath,</div>
+            和 webpack.base.conf.js 的 output.publicPath 保持一致
+          </li>
+          <li>
+            4、打包路径：
+            <p>默认情况下，会假设是被部署在一个域名的根路径上，例如 https://www.my-app.com/，则设置绝对路径</p>
+            <div class="coding"> 
+              <p>publicPath : '/'</p>
+            </div>
+            <p>如果被部署在一个子路径上，例如被部署在 https://www.my-app.com/my-app/，则设置相对路径</p>
+            <div class="coding"> 
+              <p>publicPath : /my-app/ 或 '' 或 './'</p>
+            </div>
+          </li>
+          <li class="problem">
+            <span>publicPath以下情况不建议使用相对路径</span>
+          </li>
+          <li class="resolve">
+            ● 当使用基于 HTML5 history.pushState 的路由时
+          </li>
+          <li class="resolve">
+            ● 当使用 pages 选项构建多页面应用时
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
