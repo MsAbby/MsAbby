@@ -1,0 +1,66 @@
+---
+layout:     post
+title:      "git clone并上传到新的远程分支"
+subtitle:   "Whether:sunny / Mood:am-normal, pm-normal / Especially: 0"
+date:       2020-04-17 17:03:00
+author:     "lsm"
+header-img: "/img/home-bg-o.jpg"
+tags:
+    - 前端开发
+    - 常见问题
+    - git
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>
+    将本地的从其他git仓库上clone下来的代码上传push到一个新的远程git仓库中的方法
+  </title>
+</head>
+<body>
+  <div class="bg">
+    <div class="tips">git clone</div>
+    <h2 class="title">1. git clone 并上传</h2>
+    <section class="chaper">
+      <h3 class="sub-title">1.1 相关命令操作</h3>
+      <div class="detail">
+        <h4 class="detail-title">
+          <span>1.1.1 命令</span>
+        </h4>
+        <ul class="ul-detail">
+          <li>
+            1、将所有文件添加到版本库
+            <div class="coding">$ git add .</div>
+          </li>
+          <li>
+            2、将文件提交到仓库：
+            <div class="coding">$ git commit -m '提交说明'</div>
+          </li>
+          <li>
+            3、删除之前关联的地址：
+            <div class="coding">$ git remote rm origin</div>
+          </li>
+          <li>
+            4、关联到新的远程地址：
+            <div class="coding">$ git remote add origin 新的git地址（origin 是新仓库的别名）</div>
+          </li>
+          <li>
+            5、查看是否关联成功：
+            <div class="coding">$ git remote -v</div>
+          </li>
+          <li>
+            6、push 到新的分支：
+            <div class="coding">$ git push origin master</div>
+          </li>
+          <li>
+            ps：<a href="https://www.cnblogs.com/LLBFWH/articles/10909552.html">文件转载来源：</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
