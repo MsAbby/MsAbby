@@ -3,23 +3,23 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Kaijun's Blog
+title: MsAbby's Blog
 subtitle: To Be A Lean Developer!
-author: Kaijun Chen
-language:
+author: Shumin Li
+language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://kaijun.rocks/hexo-theme-huxblog
-root: /hexo-theme-huxblog/
+root: /MsAbby.github.io/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
 #Custom Setting Start
 
 # Site settings
-SEOTitle: Kaijun的博客 | Kaijun's Blog
+SEOTitle: MsAbby的博客
 header-img: img/home-bg.jpg
 email: Kaijun.cn@gmail.com
 description: ""
@@ -147,5 +147,5 @@ theme: huxblog
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/Kaijun/hexo-theme-huxblog
-  branch: gh-pages
+  repo: https://github.com/MsAbby/MsAbby.github.io.git
+  branch: master

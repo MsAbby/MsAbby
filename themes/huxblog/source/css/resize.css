@@ -1,0 +1,134 @@
+@media only screen and (min-width: 768px) {
+  .post-content-preview {
+    font-style: normal;
+  }
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a {
+  opacity: 0 !important;
+}
+
+.bg p {
+  line-height: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.bg {
+  width: 100%;
+  background-image: linear-gradient(90deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%), linear-gradient(360deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%);
+  background-size: 20px 20px;
+  background-position: center center;
+}
+
+.tips {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid rgba(40, 113, 187, .4);
+  background: rgba(40, 113, 187, .1);
+  height: 60px;
+  line-height: 60px;
+  font-size: 12px;
+  padding-left: 20px;
+}
+
+.bg .title {
+  line-height: 50px;
+  font-weight: bold;
+  color: #2871bb;
+  font-size: 20px;
+}
+
+.chaper .sub-title{
+  color: #595959;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.chaper .detail-title {
+  margin: 25px;
+  border-bottom: 1px solid #2871bb;
+}
+
+.chaper .detail-title span {
+  font-size: 15px;
+  display: inline-block;
+  font-weight: bold;
+  background: #2871bb;
+  color: #ffffff;
+  padding: 10px 10px 2px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  margin-right: 3px;
+}
+
+/* 目录ul */
+.chaper ul.ul-catalog {
+  list-style-type: circle;
+  margin-bottom: 0px;
+}
+
+.chaper ul.ul-catalog li a {
+  text-decoration: none;
+  word-wrap: break-word;
+  font-size: 12px;
+  line-height: 26px;
+  text-align: left;
+  color: #1428bb;
+  font-weight: normal;
+  border-bottom: 1px solid #1428bb;
+}
+
+/* 详情ul */
+.chaper ul.ul-detail {
+  list-style-type: none;
+  margin-bottom: 0px;
+}
+
+.chaper ul.ul-detail li {
+  font-size: 14px;
+  line-height: 40px;
+}
+
+.chaper ul.ul-detail li .coding{
+  font-size: 13px;
+  background: #1E1E1E;
+  color: #DCDCDC;
+  padding: 5px 20px;
+  border-radius: 3px;
+  margin-bottom: 15px;
+  margin-right: 25px;
+}
+
+.chaper ul.ul-detail li.problem {
+  border-bottom: 1px solid rgba(255, 2, 2, 0.6);
+  margin: 20px 25px 30px 0;
+  line-height: 20px;
+}
+
+.chaper ul.ul-detail li.resolve {
+  color: #2871bb;
+}
+
+.chaper ul.ul-detail li.problem span {
+  font-size: 13px;
+  display: inline-block;
+  font-weight: bold;
+  background: rgba(255, 2, 2, 0.6);
+  color: #ffffff;
+  padding: 4px 5px 1px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.chaper .code {
+  background-color: #fff5f5;
+  color: #ff502c;
+  font-size: 12px;
+  padding: 4px 10px;
+}
