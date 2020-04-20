@@ -1,6 +1,6 @@
 
 ---
-layout:     post
+layout:     mark
 title:      "NodeJs学习"
 subtitle:   "Whether:sunny / Mood:am-normal, pm-normal / Especially:0"
 date:       2020-04-17 14:09:00

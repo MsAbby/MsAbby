@@ -20,36 +20,41 @@ tags:
 </head>
 <body>
   <div class="bg">
-    <div class="tips">Vue-cli配置文件</div>
-    <h2 class="title">1. Vue-cli配置文件</h2>
+    <h2 class="title">1. Vue-cli 2.× 配置文件</h2>
     <section class="chaper">
       <h3 class="sub-title">1.1 config</h3>
       <div class="detail">
         <h4 class="detail-title">
           <span>1.1.1 publicPath</span>
         </h4>
+        <p class="blockquotes">
+          作用： 部署应用包时的 "基本 URL"<br/>
+          类型： String<br/>
+          默认值： “ / ”<br/>
+          可取值：<span style="color: #2871bb; font-weight: bolder"> “ / ” &nbsp;&nbsp; 或 &nbsp;&nbsp;   “ ./ ”  &nbsp;&nbsp; 或 &nbsp;&nbsp;   “ ”   &nbsp;&nbsp; 或 &nbsp;&nbsp;   “ / 文件名 / ”</span><br/>
+        </p>
         <ul class="ul-detail">
           <li>
-            1、Type: string
-          </li>
-          <li>
-            2、Default: '/'
-          </li>
-          <li>
-            3、webpack.dev.conf.js配置：
-            <div class="coding">publicPath: config.dev.assetsPublicPath,</div>
-            和 webpack.base.conf.js 的 output.publicPath 保持一致
-          </li>
-          <li>
-            4、打包路径：
-            <p>默认情况下，会假设是被部署在一个域名的根路径上，例如 https://www.my-app.com/，则设置绝对路径</p>
-            <div class="coding"> 
-              <p>publicPath : '/'</p>
+            <h6 style="font-size: 15px">1、打包路径：</h6>
+            <p style="padding-left: 20px; margin-bottom: 15px"> ● 默认，会假设是被部署在一个域名的根路径上，例如 https://www.my-app.com/</p>
+            <div class="coding" style="margin-left: 20px"> 
+              <p>publicPath： '/ '</p>
             </div>
-            <p>如果被部署在一个子路径上，例如被部署在 https://www.my-app.com/my-app/，则设置相对路径</p>
-            <div class="coding"> 
-              <p>publicPath : /my-app/ 或 '' 或 './'</p>
+            <p style="padding-left: 20px; margin-bottom: 15px"> ● 部署在一个子路径上，例如 https://www.my-app.com/my-app/，则设置值如下，所有资源会被链接为相对路径</p>
+            <div class="coding" style="margin-left: 20px"> 
+              <p>publicPath： / my-app / 或 ' ' 或 './ '</p>
             </div>
+          </li>
+          <li>
+            <h6 style="font-size: 15px">2、配置位置调整(部署在子路径时)：</h6>
+            <p style="padding-left: 20px; color: #2871bb; font-weight: bolder; margin-bottom: 15px"">● webpack.base.config.js： prod和test配置 ' ./ ' ， dev配置 ' / '</p>
+            <p style="padding-left: 20px; color: #2871bb; font-weight: bolder; margin-bottom: 15px">● config / index.js： test和build的assetsPublicPath 为 ' ./ ' ， dev.assetsPublicPath为 ' / '</p>
+            <p style="padding-left: 20px; margin-right: 100px"><img src="/img/vue-cli/publicPath1.png" alt=""></p>
+            <p style="padding-left: 20px; margin-right: 100px"><img src="/img/vue-cli/publicPath2.png" alt=""></p>
+            <p style="padding-left: 20px; margin-right: 100px"><img src="/img/vue-cli/publicPath3.png" alt=""></p>
+            <p style="padding-left: 20px; margin-right: 100px"><img src="/img/vue-cli/publicPath4.png" alt=""></p>
+            <p style="padding-left: 20px; color: red; font-weight: bolder; margin-bottom: 15px">●注意： 若用到elementUI的字体路径找不到， 需要utils.js中配置publicPath<span></span></p>
+            <p style="padding-left: 20px; margin-right: 100px"><img src="/img/vue-cli/publicPath5.png" alt=""></p>
           </li>
           <li class="problem">
             <span>publicPath以下情况不建议使用相对路径</span>

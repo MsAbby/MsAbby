@@ -12,14 +12,14 @@ timezone:
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://kaijun.rocks/hexo-theme-huxblog
-root: /MsAbby.github.io/
+root: //
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
 #Custom Setting Start
 
 # Site settings
-SEOTitle: MsAbby的博客
+SEOTitle: MsAbby
 header-img: img/home-bg.jpg
 email: Kaijun.cn@gmail.com
 description: ""

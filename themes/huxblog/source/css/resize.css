@@ -1,9 +1,16 @@
-@media (min-width: 768px){
+@media (min-width: 1400px){
+  .container {
+    width: 1400px;
+  }
+}
+
+@media (min-width: 768px) {
   .post-container {
       padding-right: 0;
       padding-left: 0;
   }
 }
+
 @media only screen and (min-width: 768px) {
   .post-content-preview {
     font-style: normal;
@@ -13,7 +20,9 @@
 h1 a,
 h2 a,
 h3 a,
-h4 a {
+h4 a,
+h5 a,
+h6 a {
   opacity: 0 !important;
 }
 
@@ -23,7 +32,8 @@ h4 a {
   padding: 0;
 }
 
-.bg {
+.bg,
+.markdown-bg {
   width: 100%;
   background-image: linear-gradient(90deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%), linear-gradient(360deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%);
   background-size: 20px 20px;
@@ -31,7 +41,6 @@ h4 a {
 }
 
 .tips {
-  width: 100%;
   height: 50px;
   border-radius: 5px;
   border: 1px solid rgba(40, 113, 187, .4);
@@ -108,7 +117,7 @@ h4 a {
   padding: 5px 20px;
   border-radius: 3px;
   margin-bottom: 15px;
-  margin-right: 25px;
+  margin-right: 100px;
 }
 
 .chaper ul.ul-detail li.problem {
@@ -137,4 +146,14 @@ h4 a {
   color: #ff502c;
   font-size: 12px;
   padding: 4px 10px;
+}
+
+.chaper .blockquotes {
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-left: 6px solid #ced1d3;
+  color: #696969;
+  font-size: 13px;
+  padding: 10px 10px;
+  margin: 25px;
 }
