@@ -1,0 +1,82 @@
+---
+layout:     post
+title:      "vue-cli publicPath解读"
+subtitle:   "Whether:sunny / Mood:am-normal, pm-bad / Especially: 1"
+date:       2020-04-16 14:24:00
+author:     "lsm"
+header-img: "/img/banner3.jpg"
+tags:
+    - 前端开发
+    - 工具
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>
+  </title>
+</head>
+<body>
+  <div class="bg">
+    <h2 class="title">1. publicPath </h2>
+    <section class="chaper">
+      <div class="detail">
+        <h4 class="detail-title">
+          <span>1.1 Vue-cli 2.×× 配置文件</span>
+        </h4>
+        <p class="blockquotes">
+          作用： 部署应用包时配置的 "基本 URL"<br/>
+          类型： String<br/>
+          默认值： “ / ”<br/>
+          可取值：<span style="color: #2871bb; font-weight: bolder"> “ / ” &nbsp;&nbsp; 或 &nbsp;&nbsp;   “ ./ ”  &nbsp;&nbsp; 或 &nbsp;&nbsp;   “ ”   &nbsp;&nbsp; 或 &nbsp;&nbsp;   “ / 文件名 / ”</span><br/>
+        </p>
+        <ul class="ul-detail">
+          <li>
+            <h6 style="font-size: 15px">1、打包路径：</h6>
+            <p style="padding-left: 20px; margin-bottom: 15px"> ● 默认，会假设是被部署在一个域名的根路径上，例如 https://www.my-app.com/</p>
+            <div class="coding" style="margin-left: 20px"> 
+              <p>publicPath： '/ '</p>
+            </div>
+            <p style="padding-left: 20px; margin-bottom: 15px"> ● 部署在一个子路径上，例如 https://www.my-app.com/my-app/，则设置值如下，所有资源会被链接为相对路径</p>
+            <div class="coding" style="margin-left: 20px"> 
+              <p>publicPath： / my-app / 或 ' ' 或 './ '</p>
+            </div>
+          </li>
+          <li>
+            <h6 style="font-size: 15px">2、配置位置调整(部署在子路径时)：</h6>
+            <p style="padding-left: 20px; color: #2871bb; font-weight: bolder; margin-bottom: 15px"">● webpack.base.config.js： prod和test配置 ' ./ ' ， dev配置 ' / '</p>
+            <p style="padding-left: 20px; color: #2871bb; font-weight: bolder; margin-bottom: 15px">● config / index.js： test和build的assetsPublicPath 为 ' ./ ' ， dev.assetsPublicPath为 ' / '</p>
+            <p style="padding-left: 20px; margin-right: 100px"><img src="/img/vue-cli/publicPath1.png" alt=""></p>
+            <p style="padding-left: 20px; margin-right: 100px"><img src="/img/vue-cli/publicPath2.png" alt=""></p>
+            <p style="padding-left: 20px; margin-right: 100px"><img src="/img/vue-cli/publicPath3.png" alt=""></p>
+            <p style="padding-left: 20px; margin-right: 100px"><img src="/img/vue-cli/publicPath4.png" alt=""></p>
+            <p style="padding-left: 20px; color: red; font-weight: bolder; margin-bottom: 15px">●注意： 若用到elementUI的字体路径找不到， 需要utils.js中配置publicPath<span></span></p>
+            <p style="padding-left: 20px; margin-right: 100px"><img src="/img/vue-cli/publicPath5.png" alt=""></p>
+          </li>
+          <li>
+            <h6 style="font-size: 15px">3、配置场景：</h6>
+            <p class="blockquotes-line">不设置publicPath时，部署后请求路径：https://www.my-app.com/css/app.05b7997b.css</p>
+            <p class="blockquotes-line">设置为/时，部署后请求路径：https://www.my-app.com/css/app.05b7997b.css</p>
+            <p class="blockquotes-line">设置为./时，部署后请求路径：https://www.my-app.com/my-app/css/app.05b7997b.css</p>
+            <p class="blockquotes-line">设置为static时，部署后请求路径：https://www.my-app.com/my-app/static/css/app.05b7997b.css</p>
+            <p class="blockquotes-line">设置为./static时，部署后请求路径：https://www.my-app.com/my-app/static/css/app.05b7997b.css</p>
+            <p class="blockquotes-line">设置为../static时，部署后请求路径：https://www.my-app.com/static/css/app.05b7997b.css</p>
+            <p class="blockquotes-line">设置为../时，部署后请求路径：https://www.my-app.com/css/app.05b7997b.css</p>
+          </li>
+          <li class="problem" style="margin-bottom: 20px">
+            <span>publicPath以下情况不建议使用相对路径</span>
+          </li>
+          <li class="resolve">
+            ● 当使用基于 HTML5 history.pushState 的路由时
+          </li>
+          <li class="resolve">
+            ● 当使用 pages 选项构建多页面应用时
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

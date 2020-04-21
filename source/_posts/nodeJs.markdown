@@ -6,17 +6,17 @@ subtitle:   "Whether:sunny / Mood:am-normal, pm-normal / Especially:0"
 date:       2020-04-17 14:09:00
 author:     "lsm"
 catalog:    true
-header-img: "post-bg-js-version.jpg"
+header-img: "/img/banner6.jpg"
 tags:
     - 前端开发
     - 语言
 ---
 
-# nodeJs
+## nodeJs
 
 > 背景：
 >
-> 1、nodeJS是单线程非阻塞I / O
+> 1、nodeJS是单线程非阻塞 I / O
 >
 > 2、nodejs运行环境是V8引擎，性能好，
 >
@@ -24,7 +24,7 @@ tags:
 >
 > 4、学习成本低：网站开发、即时通信、小程序开发、跨平台开发等； 不适用于银行、证券等方向
 
-#### 1、单线程
+##### 1、单线程
 
 - 优点：
   - 高性能：不用反复创建线程、销毁线程，速度快，内存占用小
@@ -32,35 +32,34 @@ tags:
 - 劣势：
   - 适合小型项目开发，一旦一个事件阻塞了I/O，整个nodeJs都会瘫痪
 
-#### 2、单线程非阻塞I/O
+##### 2、单线程非阻塞I/O
 
 - 特点：非阻塞I/O是在执行了数据库访问代码后立即执行后续的代码，把数据库返回的结果放在回调函数中，当函数执行完毕自动获取该结果，这就提高执行效率
 
-#### 3、 事件驱动
+##### 3、 事件驱动
 
 - 特点： 将事件放入一个事件环中，不停的查看事件环来让回调函数（可能是磁盘I/O，网络通信、数据库查询等操作）对其进行处理。
 
-#### 4、浏览器工作原理
+##### 4、浏览器工作原理
 
-客户端： 发送请求 （性能无法控制）
++ 客户端： 发送请求 （性能无法控制）
 
-服务端： 接受请求，通过I/O从数据库数据 （性能控制有 “ 服务器宽带 ” 和CDN加速）
++ 服务端： 接受请求，通过I/O从数据库数据 （性能控制有 “ 服务器宽带 ” 和CDN加速）
 
-服务端： 数据传输给客户端（算法优化和多线程优化）
++ 服务端： 数据传输给客户端（算法优化和多线程优化）
 
-客户端： 数据解析，渲染
++ 客户端： 数据解析，渲染
 
-#### 
 
-# NodeJ工作
+## NodeJ工作
 
-#### 1、导入http
+##### 1、导入http
 
 ```javascript
 var http = require('http');
 ```
 
-#### 2、创建服务器
+##### 2、创建服务器
 
 ```javascript
 // 创建一个服务器
@@ -76,15 +75,15 @@ server.listen(8080);
 console.log(“Server running at http://127.0.0.1:8888”);
 ```
 
-#### 3、运行
+##### 3、运行
 
 ```javascript
 node server.js
 ```
 
-#### 4、fs文件系统
+##### 4、fs文件系统
 
-- 传统方法： 先把数据缓存到内存中，然后才回调，比较浪费内存，对大文件不友好，因此用流好一些
+- 传统方法： 先把数据缓存到内存中，再回调，比较浪费内存，对大文件不友好，因此用流好一些
 
 ```javascript
 const fs = require('fs');
@@ -116,7 +115,7 @@ ws.on("error", ex => {});
 ws.on("finish", () => {});
 ```
 
-#### 5、url
+##### 5、url
 
 ```javascript
 const url = require('url');
@@ -127,7 +126,7 @@ str = url.parse(jd_url, true);
 console.log(str); // 对query解析
 ```
 
-#### 6、path
+##### 6、path
 
 ```javascript
 const path = require('path');
