@@ -40,6 +40,11 @@ blockquote {
   padding-left: 15px;
 }
 
+img {
+  box-shadow: 2px 4px 7px #999;
+  border-radius: 6px;
+}
+
 h1 a,
 h2 a,
 h3 a,
