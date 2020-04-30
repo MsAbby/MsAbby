@@ -74,10 +74,13 @@ tags:
 <img src="/img/knowledge/stack.jpg" width="60%">
 
 #### 浅拷贝和深拷贝
+  + 文章转载：
+    + [深浅拷贝1](https://www.cnblogs.com/c2016c/articles/9328725.html)
+    + [深浅拷贝2](https://juejin.im/post/5d0a48d86fb9a07ea803cf23)
   + 目标：是相对于`引用类型`而言的。
   + 定义：
     + 浅拷贝： 指复制后两个js 对象 `指向同一个内存地址`，其中一个改变会影响另一个。
-    + 浅拷贝： 指复制后的新对象重新 `指向新的内存地址`，两个对象改变互不影响。
+    + 深拷贝： 指复制后的新对象重新 `指向新的内存地址`，两个对象改变互不影响。
   + <span style="color: #ff502c;border-bottom: 1px solid #ff502c; font-weight: bolder">浅拷贝 - 常用方法</span>
     + <span style="color: #ff502c; font-weight: bolder">1、赋值</span>
     ````
@@ -112,8 +115,8 @@ tags:
 
       ````
 
-    + <span style="color: #ff502c; font-weight: bolder">3、extend() `[递归思路]`</span>
-      ` $.extend(参数1，{}, obj)`： 参数1`不写`或为`false`表示浅拷贝， `true`表示深拷贝
+  + <span style="color: #ff502c; font-weight: bolder">3、extend() `[递归思路]`</span>
+    + ` $.extend(参数1，{}, obj)`： 参数1`不写`或为`false`表示浅拷贝， `true`表示深拷贝
 
       ````
       let obj1 = {
@@ -128,6 +131,31 @@ tags:
       console.log(obj2)  // {study: {name: 'chinese'}, age: 16}
       console.log(obj1.study.name == obj2.study.name)  // true
       console.log(obj1.study.name === obj2.study.name) // true
+
+      ````
+  + <span style="color: #ff502c; font-weight: bolder">4、Array.prototype.concat() `[数组]`</span>
+    + 数组concat返回一个新数组，不影响原数组
+
+      ````
+      let arr1 = [[1, 2], 3, 4]
+      let arr2 = arr1.concat()
+
+      arr1[0][0] = 0
+      console.log(arr1)          // [[0, 2], 3, 4]
+      console.log(arr2)          // [[0, 2], 3, 4]
+
+      ````
+
+  + <span style="color: #ff502c; font-weight: bolder">5、Array.prototype.slice() `[数组]`</span>
+    + 数组slice返回一个新数组，不影响原数组
+    
+      ````
+      let arr1 = [[1, 2], 3, 4]
+      let arr2 = arr1.slice()
+
+      arr1[0][0] = 0
+      console.log(arr1)          // [[0, 2], 3, 4]
+      console.log(arr2)          // [[0, 2], 3, 4]
 
       ````
 
@@ -153,6 +181,8 @@ tags:
 
     + <span style="color: #ff502c; font-weight: bolder">2、Object.assign() `[一维数据、ES6]`</span>
 
+      > ps：不是真正意义上的深拷贝
+
       ````
       let obj1 = {
         study: {
@@ -169,7 +199,35 @@ tags:
 
       ````
 
-    + <span style="color: #ff502c; font-weight: bolder">3、JSON.parse(JSON.stringify(obj))`[二维数据]`</span>
+    + <span style="color: #ff502c; font-weight: bolder">3、Array.prototype.concat() `[一维数据、数组]`</span>
+
+      > ps：不是真正意义上的深拷贝
+
+      ````
+      let arr1 = [[1, 2], 3, 4]
+      let arr2 = arr1.concat()
+
+      arr1[1] = 66
+      console.log(arr1)          // [[1, 2], 66, 4]
+      console.log(arr2)          // [[1, 2], 3, 4]
+
+      ````
+
+    + <span style="color: #ff502c; font-weight: bolder">4、Array.prototype.slice() `[一维数据、数组]`</span>
+
+      > ps：不是真正意义上的深拷贝
+
+      ````
+      let arr1 = [[1, 2], 3, 4]
+      let arr2 = arr1.concat()
+
+      arr1[1] = 66
+      console.log(arr1)          // [[1, 2], 66, 4]
+      console.log(arr2)          // [[1, 2], 3, 4]
+
+      ````
+
+    + <span style="color: #ff502c; font-weight: bolder">5、JSON.parse(JSON.stringify(obj))`[二维数据]`</span>
       + a、能够处理JSON格式的所有数据类型。
       + b、会抛弃对象的`constructor`，即：不管该对象原来构造函数是什么，深拷贝后都会变成`Object`。
       + c、`正则表达式`类型、`函数类型`等无法进行深拷贝，且会直接丢失相应的值。
@@ -191,7 +249,7 @@ tags:
 
       ````
 
-    + <span style="color: #ff502c; font-weight: bolder">4、extend() `[二维数据、递归思路]`</span>
+    + <span style="color: #ff502c; font-weight: bolder">6、extend() `[二维数据、递归思路]`</span>
       ` $.extend(true, {}, obj)`
 
       ````
@@ -209,7 +267,7 @@ tags:
       console.log(obj1 === obj2) // false
 
       ````
-    + <span style="color: #ff502c; font-weight: bolder">5、lodash中的_.clone(obj, true)等价于_.cloneDeep(obj) `[二维数据、递归思路]`</span>
+    + <span style="color: #ff502c; font-weight: bolder">7、lodash中的_.clone(obj, true)等价于_.cloneDeep(obj) `[二维数据、递归思路]`</span>
 
       ````
       let obj1 = {
@@ -226,4 +284,12 @@ tags:
       console.log(obj1 === obj2) // false
 
       ````
-    https://juejin.im/post/5d0a48d86fb9a07ea803cf23
+
+  + <span style="color: #ff502c;border-bottom: 1px solid #ff502c; font-weight: bolder">深拷贝不同方法的性能对比</span>
+
+    > <p style="font-size: 16px; font-weight: bolder">`一维数据`结构的深拷贝方法`性能最佳`为: `Object.assign()`</p>
+    > <p style="font-size: 16px; font-weight: bolder">`二维数据`结构的深拷贝方法`性能最佳`为: `JSON.parse(JSON.stringify())`</p>
+
+#### 原型 / 继承
+  + 构造函数：
+    + 定义： 构造函数本身就是一个函数，与普通函数没有任何区别，不过为了规范一般将其`首字母大写`。构造函数和普通函数的区别在于，使用 new 生成实例的函数就是构造函数，直接调用的就是普通函数。

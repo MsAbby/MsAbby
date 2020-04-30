@@ -1,0 +1,151 @@
+---
+layout:     mark
+title:      "问题集锦"
+subtitle:   "Whether:sunny / Mood:am-normal, pm-normal / Especially:0"
+date:       2020-04-29 14:24:00
+author:     "lsm"
+catalog:    true
+header-img: "/img/banner2.jpg"
+tags:
+    - 前端开发
+    - 语法
+    - HTML/CSS
+---
+
+<div class="tips">前言:
+  最近项目准备发生产了，遇到了一系列问题，找问题真的是一件很痛苦的活儿
+  小小总结一下吧。。。
+</div>
+
+#### 关于publicPath
+  > 文章有一篇是专门讲这个的，问题原因是不懂 `'./'， '/'`的区别
+  > 直到这次，起因是：后台的接口没有api开头，前端地址和后台接口用的是一个域名，
+  > 以前运维通过 `是否api开头`来区分前端合后端， 现在没有咋怎呢？？(终于明白以前为啥接口都是`api开头的`)
+  > 于是运维在前端打包的文件dist外面包裹了一层文件，名叫`web`，`属于部署在一个子路径上`
+  > 但是打包后还是访问不到， 问题就出在了 `publicPath`上了
+
+  ##### 问题1： 部署在一个子路径上
+  + <p>所以，publicPath 要改为` './'`</p>
+  + 注意：
+    + 生产环境和测试环境 改为 './'
+    + 测试环境依旧为 '/' (不然本地运行会出错)
+
+##### 问题2：部署成功后elementUI的字体找不到路径
+  + <p>更改 build/utils下面的publicPath</p>
+  + `publicPath: '../../'`
+  
+  ````
+    if (options.extract) {
+      return ExtractTextPlugin.extract({
+        use: loaders,
+        fallback: 'vue-style-loader',
+        publicPath: '../../'
+      })
+
+  ````
+
+#### cross-env
+
+  > cross-env能跨平台地设置及使用环境变量
+
+  + step1 安装：`npm install cross-env --save-dev`
+    
+  ````
+  //package.json
+
+  "scripts": {
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "start": "npm run dev",
+    "build": "cross-env NODE_ENV=production node build/build.js",
+    "build-test": "cross-env NODE_ENV=test node build/build.js"    
+  }
+  ````
+
+  + step2 新建测试文件：
+
+  ````
+    1、新建： webpack.test.conf.js（和webpack.prod.conf.js保持一致）
+    2、新建： test.env.js
+    3、config / index.js中： 添加test{}
+
+  ````
+
+#### 加载动态路由
+  ##### 问题1： 加载完后，页面空白或出现死循环
+  > 动态加载 后台返回 的路由表
+  > 首先：无登录，直接加载动态路由
+  > 问题： 路由跳转时，地址栏路由正确，但是，页面是空白的，在路由前置守卫中beforeEach打印to参数，发现matched总为空
+  > 解决如下：条件一个判断`if (to.matched.length === 0){ } else { }`
+
+  ##### 问题2：router.addRoutes([router]) 可能没反应
+  > 问题： router.addRoutes([router])后，打印`router参数`发现router.options.routes并没有增加
+  > 解决如下：在`router.addRoutes`之前加一个 `router.options.routes = 拼接好的完整路由`
+
+    ````
+    // permission.js
+    router.beforeEach(async(to, from, next) => {
+      var roles = 'admin'
+      try {
+        if (to.matched.length === 0) {                     // `就是加上这个判断，一切迎刃而解啦!!!!!!!!`
+        ----------------------------------------------------------------------------------------------
+          // 刷新页面后,会重新触发action去获取路由的
+          if (store.state.permission.routes.length === 0) {
+            // 判断是否需要登录,同时拿后台返回的路由表
+            const asyncProductRouter = await isLogin()
+            const combineRouter = await filterAsyncRouter(asyncProductRouter)
+            const accessRoutes = await store.dispatch('permission/generateRoutes',
+            { roles: roles, asyncRoutes: combineRouter })
+            router.options.routes = router.options.routes.concat(accessRoutes) // `这个也很重要啊啊啊啊!!!!!!`
+            ------------------------------------------------------------------------------------------------
+            router.addRoutes(accessRoutes)
+            --------------------------------
+            next({ ...to, replace: true })
+          }
+        } else {
+          next()
+        }
+      } catch (error) {
+        Message.error(error || 'Has Error')
+      }
+    })
+    ````
+  ##### 问题3：路由component拼接出问题
+  > 问题： 后台返回的文件的路径是字符串，需要前端拼接成`componet的格式`,拼接完成后发现 <span style="color: red">Error: Cannot find module @/views/undefined',</span> 懵的转圈圈
+  > 解决： 先将获取的路径参数 赋值给 一个变量; 再去拼接（我也不晓得为啥啊啊啊啊）
+  > ` const component = item.children[i].component`
+  > `component: resolve => require(['@/views' + component], resolve),`
+
+  ````
+  function filterAsyncRouter(asyncRouterMap) {
+  return new Promise((resolve) => {
+    const accessedRouters = asyncRouterMap.map((item) => {
+      item = Object.assign({}, item, {
+        component: Container,                              // 这一句也很重要，后台是字符串 !!!!!!!!
+        ----------------------------------------------------------------------------------------
+        redirect: item.path + '/' + item.children[0].path
+      })
+      if (item.children && item.children.length > 0) {
+        for (let i = 0; i < item.children.length; i++) {
+          const component = item.children[i].component     // 就是这一一句额外重要 !!!!!!!!
+          --------------------------------------------------------------------------------
+          item.children[i] = Object.assign({}, {
+            path: item.children[i].path,
+            name: item.children[i].name,
+            component: resolve => require(['@/views' + component], resolve),  // 开始拼接了 !!!!!!!!
+            ---------------------------------------------------------------------------------------
+            meta: {
+              title: item.children[i].meta.title,
+              activeMenu: item.children[i].meta.activeMenu
+            },
+            hidden: item.children[i].hidden
+          })
+        }
+        return item
+      }
+    })
+    resolve(accessedRouters)
+  })
+}
+
+  ````
+

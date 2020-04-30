@@ -23,10 +23,6 @@
   }
 }
 
-.sidebar-container a {
-  color: #666666!important;
-}
-
 blockquote {
   background: #f6f6f6;
   font-size: .85em;
@@ -36,8 +32,37 @@ blockquote {
   font-weight: 600;
   color: rgb(41, 41, 41)
 }
-.h4_nav {
-  padding-left: 15px;
+.h4_nav a {
+  font-size: 1.7rem;
+  line-height: 40px;
+  color: #333 !important;
+  font-weight: bolder;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.h5_nav {
+  margin-left: 18px;
+}
+.h5_nav a {
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: #333 !important;
+  line-height: 30px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.h4_nav.active,
+.h5_nav.active {
+  color: #007fff !important;
+}
+.h4_nav.active a,
+.h5_nav.active a {
+  color: #007fff !important;
 }
 
 img {
@@ -65,6 +90,16 @@ h6 a {
   padding: 0;
 }
 
+.sidebar-container .catalog-toggle {
+  font-size: 1.8rem;
+  color: #000;
+}
+
+.markdown-bg h5 {
+  font-size: 17px;
+  color: rgb(32, 32, 32);
+}
+
 .markdown-bg h4 {
   margin-bottom: 15px;
   font-weight: bold;
@@ -87,6 +122,7 @@ h6 a {
 .markdown-bg blockquote {
   font-style: normal;
   color: #2b2b2b;
+  line-height: 35px;
 }
 
 code {
@@ -107,14 +143,12 @@ code {
   padding: 2px 20px;
 }
 .tips {
-  height: 50px;
   border-radius: 5px;
   border: 1px solid rgba(40, 113, 187, .4);
   background: rgba(40, 113, 187, .1);
-  height: 60px;
-  line-height: 60px;
+  line-height: 30px;
   font-size: 12px;
-  padding-left: 20px;
+  padding: 20px;
 }
 
 .bg .title {
