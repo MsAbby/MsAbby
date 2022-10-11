@@ -1,0 +1,205 @@
+---
+layout: post
+title: "react 基础1"
+subtitle: "Whether:sunny / Mood:am-normal, pm-bad / Especially: 1"
+date: 2022-10-11 14:24:00
+author: "lsm"
+header-img: "/img/banner6.jpg"
+tags:
+- 前端开发
+- 工具
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="bg">
+        <div class="tips">
+            <a href="#one">1. 利用脚手架初始化项目</a><br/>
+            <a href="#two">2. npx命令介绍</a><br/>
+            <a href="#three">3. yarn命令介绍</a><br/>
+            <a href="#four">4. 导入react</a><br/>
+            <a href="#five">5. createElement()问题</a><br/>
+            <a href="#six">6. jsx学习</a><br/>
+            <a href="#seven">7. 为什么脚手架可以使用jsx语法</a><br/>
+            <a href="#eight">8. jsx语法注意事项</a><br/>
+            <a href="#nine">9. jsx 嵌入js 表达式</a><br/>
+            <a href="#ten">10. jsx 条件渲染</a><br/>
+          </div>
+        <h2 class="title"> I. 什么是react</h2>
+
+        用于构建用户界面的javascript库<br />
+        起源于 facebook</br>
+
+        <h4 class="detail-title">
+            <span>特点</span>
+        </h4>
+        1. 声明式： 只要描述结构，渲染ui过程由react来做的 <br>
+        2. 基于组件： 最重要 <br>
+        3. 学习一次，随处使用： 开发web应用、 开发移动端原生应用、 还有vr开发 <br>
+
+        <h2 class="title">II. react 基本使用</h2>
+
+        1. createElement <br />
+        <ul class="ul-detail">
+            <li>
+                <div class="coding">
+                    1. const title = React.<span style="color: yellow">createElement('p', {title: '属性'}, id: 'p1' )</span>
+                </div>
+                <p>第一个参数：要创建的react元素名称</p>
+                <p>第二个参数： 元素的属性（可以多个）</p>
+                <p>第三个参数及以后： 该元素的子节点</p>
+            </li>
+        </ul>
+        2. ReactDOM.render <br />
+        <ul class="ul-detail">
+            <li>
+                <div class="coding">
+                    <span style="color: yellow"> ReactDOM.render</span> (el, document.getElementById('root'))
+                </div>
+                <p>第一个参数：要创建的react元素名称</p>
+                <p>第二个参数： DOM对象， 用于渲染到页面中的位置</p>
+            </li>
+        </ul>
+
+
+        <h2 class="title">III. react 脚手架的使用</h2>
+
+        <h4 class="detail-title">
+            <span id="one">利用脚手架初始化项目</span>
+        </h4>
+        <ul class="ul-detail">
+            <li>
+                1. 初始化项目： <span style="color: red">npx create-react-app my-app</span>
+            </li>
+            <li>
+                2. 启动项目：  <span style="color: red">npm start</span>
+            </li>
+        </ul>
+
+        <h4 class="detail-title">
+            <span id="two">npx命令介绍</span>
+        </h4>
+        <ul class="ul-detail">
+            <li>
+                1. 原先：  <span style="color: green">先全局安装脚手架（全局安装长时间不用没有意义）， 才能使用脚手架提供的命令初始化项目</span>
+            </li>
+            <li>
+                2. 现在：  <span style="color: rgb(245, 71, 100)">无需全局安装脚手架， 可直接使用脚手架提供的命令</span>
+            </li>
+            <li>
+                3. 推荐：  <span style="color: red">npx create-react-app my-app</span>
+            </li>
+        </ul>
+
+        <h4 class="detail-title">
+            <span id="three">yarn命令介绍</span>
+        </h4>
+        <ul class="ul-detail">
+            <li>
+                1. 起源：  facebook发布
+            </li>
+            <li>
+                2. 特点： 快速、安全、可靠
+            </li>
+            <li>
+                3. 安装： <span style="color: red">yarn add 包名称</span>
+            </li>
+        </ul>
+
+        <h4 class="detail-title">
+            <span id="four">导入react</span>
+        </h4>
+        <ul class="ul-detail">
+            <li>1. 导入 react 和 react-dom包</li>
+            <li>
+                <div class="coding">
+                    import React from 'react'
+                    import ReactDOM from 'react-dom'
+                </div>
+            </li>
+            <li>2. 调用 React.<span style="color: rgb(245, 71, 100)">createElement</span>创建元素</li>
+            <li>3. 调用 <span style="color: rgb(245, 71, 100)"> ReactDOM.render</span> 渲染元素到页面中</li>
+        </ul>
+
+        <h2 class="title"> IV. JSX学习</h2>
+
+        <h4 class="detail-title">
+            <span id="five">createElement()问题</span>
+        </h4>
+        <ul class="ul-detail">
+            <li style="color: rgb(255, 157, 0)">1.  繁琐不简洁</li>
+            <li style="color: rgb(255, 157, 0)">2.  不直观， 一眼看不出结构</li>
+            <li style="color: rgb(255, 157, 0)">3. 不优雅， 用户体验不爽</li>
+        </ul>
+
+        <h4 class="detail-title">
+            <span id="six">jsx学习</span>
+        </h4>
+        <ul class="ul-detail">
+            <li>
+                <div class="tips">
+                    1. 是javascript xml简写<br/>
+                    2. 优势： 声明式语法更直观<br/>
+                    3. 优势： 降低了学习成本， 提高了开发效率<br/>
+                </div>
+            </li>
+            <li>
+                1.  jsx创建元素：<span style="color: red"> const title = 《h1》 新建元素 《/h1》</span>
+            </li>
+            <li>
+                2.  渲染元素：<span style="color: red">  ReactDOM.render(title, document.getElementById('root'))</span>
+            </li>
+        </ul>
+
+        <h4 class="detail-title">
+            <span id="seven">为什么脚手架可以使用jsx语法</span>
+        </h4>
+        <ul class="ul-detail">
+            <li>1. jsx 不是ecmascript 标准语法， 是ecmascript 的<span style="color: red">语法扩展</span></li>
+            <li>2. 需要babel 编译处理，才能在浏览器环境中使用</li>
+            <li>3. create-react-app 中已经默认有该配置， 所以无需手动配置</li>
+            <li>4. 编译包： @babel/preset-react</li>
+        </ul>
+
+        <h4 class="detail-title">
+            <span id="eight">jsx语法注意事项</span>
+        </h4>
+        <ul class="ul-detail">
+            <li>
+                1. 属性名： 驼峰命名法
+            </li>
+            <li>
+                2. 特殊属性：  class -> className;   for -> htmlFor;  tabindex ->tabIndex
+            </li>
+            <li>
+                <span style="color: red">3. 推荐：   小括号包裹 ‘ jsx ’，避免自动插入分号</span>
+            </li>
+        </ul>
+
+        <h4 class="detail-title">
+            <span id="nine">jsx 嵌入js 表达式</span>
+        </h4>
+
+        <ul class="ul-detail">
+            <li> 定义：  { js表达式  }</li>
+        </ul>
+
+        <h4 class="detail-title">
+            <span id="ten">jsx 条件渲染</span>
+        </h4>
+        <ul class="ul-detail">
+            <li>1. 条件渲染： if else  /   三元表达式    / 逻辑与运算符 </li>
+        </ul>
+    </div>
+</body>
+
+</html>
