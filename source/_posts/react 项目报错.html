@@ -1,0 +1,217 @@
+---
+layout: post
+title: "react 项目报错"
+subtitle: "Whether:sunny / Mood:am-normal, pm-bad / Especially: 1"
+date: 2022-10-11 14:24:00
+author: "lsm"
+header-img: "/img/banner6.jpg"
+tags:
+- 前端开发
+- 工具
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="bg">
+        <h2 class="title">less 支持的配置</h2>
+
+        react脚手架中， 默认支持的是 css 或sass/scss， 需要自己配置less
+        1. 执行命令 npm install eject, 如果
+
+        <h2 class="title">配置网络请求</h2>
+        1. 安装依赖 cnpm install axios <br>
+        2. 安配置网络请求文件 <br>
+        3. 配置路径地址文件 <br>
+
+        <h2 class="title">初始化样式</h2>
+        1. 初始化css样式文件 <br />
+        2. 引入字体图标 <br />
+
+        <h2 class="title">初始化路由文件</h2>
+
+        <h4 class="detail-title">
+            <span id="one">报错1</span>
+        </h4>
+        <ul class="ul-detail">
+            <li>
+                <div class="coding">
+                    /node_modules/@types/react-router/index.d.ts TypeScript error in
+                    /node_modules/@types/react-router/index.d.ts(149,100):
+                    Type expected. TS1110<br />
+
+                    147 | ): match<Params> | null;<br />
+                        148 | <br />
+                        149 | export type ExtractRouteOptionalParam<T extends string, U=string | number | boolean> = T
+                            extends `${infer Param}?`<br />
+                            | <br />
+                            150 | ? { [k in Param]?: U }<br />
+                            151 | : T extends `${infer Param}*`<br />
+                            152 | ? { [k in Param]?: U }<br />
+                </div>
+            </li>
+        </ul>
+
+
+
+        <h4 class="detail-title">
+            <span id="one">报错2</span>
+        </h4>
+
+        <ul class="ul-detail">
+            <li>
+                <div class="coding">
+                    Error: Cannot find module 'react-dev-utils/getPublicUrlOrPath'
+                    Require stack:
+                    - /Users/lsm/Documents/01.study/react/first-react/config/paths.js
+                    - /Users/lsm/Documents/01.study/react/first-react/config/env.js
+                    - /Users/lsm/Documents/01.study/react/first-react/scripts/start.js</br>
+
+                    // 解决方案： npm install --save-dev react-dev-utils
+                </div>
+            </li>
+        </ul>
+
+
+        <h4 class="detail-title">
+            <span id="one">报错3</span>
+        </h4>
+        <ul class="ul-detail">
+            <li>
+                <div class="coding">
+                    Error: Cannot find module 'webpack-dev-server'
+                    Require stack:
+                    - /Users/lsm/Documents/01.study/react/first-react/scripts/start.js</br>
+
+                    // 解决方案： npm install --save-dev webpack-dev-server
+                </div>
+            </li>
+        </ul>
+
+
+        <h4 class="detail-title">
+            <span id="one">报错4</span>
+        </h4>
+        <ul class="ul-detail">
+            <li>
+                <div class="coding">
+                    Error: Cannot find module 'resolve'
+                    Require stack:
+                    - /Users/lsm/Documents/01.study/react/first-react/config/webpack.config.js
+                    - /Users/lsm/Documents/01.study/react/first-react/scripts/start.js</br>
+
+                    // 解决方案： npm install --save-dev resolve
+                </div>
+            </li>
+        </ul>
+
+        <h4 class="detail-title">
+            <span id="one">报错5</span>
+        </h4>
+        <ul class="ul-detail">
+            <li>
+                <div class="coding">
+                    ERR! Found: webpack@5.74.0
+                    npm ERR! node_modules/webpack
+                    npm ERR! webpack@"^5.74.0" from the root project
+                    npm ERR!
+                    npm ERR! Could not resolve dependency:
+                    npm ERR! peer webpack@"^4.0.0" from optimize-css-assets-webpack-plugin@6.0.1
+                    npm ERR! node_modules/optimize-css-assets-webpack-plugin
+                    npm ERR! dev optimize-css-assets-webpack-plugin@"*" from the root project
+                    npm ERR!
+                    npm ERR! Fix the upstream dependency conflict, or retry</br>
+
+
+                    // 使用--force或--legacy-peer-deps可解决这种情况。</br>
+
+                    // --force 会无视冲突，并强制获取远端npm库资源，当有资源冲突时覆盖掉原先的版本。</br>
+                    // --legacy-peer-deps：安装时忽略所有peerDependencies，忽视依赖冲突，采用npm版本4到版本6的样式去安装依赖，已有的依赖不会覆盖。</br>
+
+                    // npm install --legacy-peer-deps optimize-css-assets-webpack-plugin --save-dev
+                </div>
+            </li>
+        </ul>
+
+        <h4 class="detail-title">
+            <span id="one">报错6</span>
+        </h4>
+        <ul class="ul-detail">
+            <li>
+                <div class="coding">
+                    Invalid options object. Terser Plugin has been initialized using an options object that does not
+                    match the API
+                    schema.
+                    - options has an unknown property 'sourceMap'. These properties are valid:
+                    object { test?, include?, exclude?, terserOptions?, extractComments?, parallel?, minify? }</br>
+
+
+                    // 解决方案： npm uninstall webpack</br>
+                    // npm install --legacy-peer-dep webpack@4.46.0 --save-dev</br>
+
+                    // npm install --save-dev terser-webpack-plugin@4.2.3
+                </div>
+            </li>
+        </ul>
+
+        <h4 class="detail-title">
+            <span id="one">报错7</span>
+        </h4>
+        <ul class="ul-detail">
+            <li>
+                <div class="coding">
+                    ManifestPlugin is not a constructor</br>
+
+                    // 解决方案： 降低版本： npm install webpack-manifest-plugin@2.2.0 --save-dev
+
+                </div>
+            </li>
+        </ul>
+
+        <h4 class="detail-title">
+            <span id="one">报错8</span>
+        </h4>
+
+        <ul class="ul-detail">
+            <li>
+                <div class="coding">
+                    Failed to compile.
+
+                    Cannot read property 'tap' of undefined</br>
+
+                    // 原因： 保持html-webpack-plugin与webpack的版本一致，webpack用的是5,那么html-webpack-plugin版本也要是5</br>
+                    // npm install --save-dev html-webpack-plugin@4.0.0-beta.11
+                </div>
+            </li>
+        </ul>
+
+        <h4 class="detail-title">
+            <span id="one">报错9</span>
+        </h4>
+        <ul class="ul-detail">
+            <li>
+                <div class="coding">
+                    webpack Dev Server Invalid Options
+
+                    options should NOT have additional properties
+                    options should NOT have additional properties
+                    options should NOT have additional properties<br />
+
+                    // 原因： webpack 版本和webpack-dev-server版本和html-webpack-plugin版本要对应<br />
+                    // "devDependencies": { "html-webpack-plugin": "^4.5.1", "webpack": "^4.46.0", "webpack-dev-server":
+                    "^3.11.2" }<br />
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

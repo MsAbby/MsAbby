@@ -23,231 +23,248 @@ tags:
 </head>
 <body>
   <div class="bg">
-    <div class="tips">hexo更新博客</div>
-    <h2 class="title">1. 创建或更新博客并上传</h2>
-    <section class="chaper">
-      <h3 class="sub-title">1.1 检查工具的安装</h3>
-      <ul class="ul-catalog">
-        <li>
-          <a href="#">是否注册gitHub、安装node、npm、git Bash、配置SSH</a>
-        </li>
-        <li>
-          <a href="#">是否安装Hexo</a>
-        </li>
-      </ul>
-      <div class="detail">
-        <h4 class="detail-title">
-          <span>1.1.1 配置SSH</span>
-        </h4>
-        <ul class="ul-detail">
-          <li>
-            1、打开git bash 面板
-          </li>
-          <li>
-            2、关联githup账户：
-            <div class="coding">$ git config - -global user.username "githup用户名"</div>
-          </li>
-          <li>
-            3、关联邮箱：
-            <div class="coding">$ git config - -global user.email "your_email@example.com"   再三个回车</div>
-          </li>
-          <li>
-            4、检查本地是否有SSH Key(公钥)存在：
-            <div class="coding">$ cd ~/.ssh</div>
-          </li>
-          <li>
-            5、生成新的SSH Key：
-            <div class="coding">$ ssh-keygen -t rsa -C "your_email@example.com"   后面直接按回车</div>
-          </li>
-          <li>6、打开id_rsa.pub： 在.ssh文件夹，找密钥id_rsa.pub文件， 复制key</li>
-          <li>7、复制ssh key：点githup头像, Settings -> SSH and GPG keys -> New SSH key中, 粘贴即可</li>
-          <li>8、检查连接： ssh -T git@github.com</li>
-        </ul>
+    <div class="bg-left">
+      <div class="tips">
+        <a href="#one">1. 配置SSL</a><br/>
+        <a href="#two">2. 安装hexo</a><br/>
+        <a href="#three">3. 修改ui主题配置文件</a><br/>
+        <a href="#four">4. 部署上线</a><br/>
+        <a href="#five">5. hexo命令</a><br/>
       </div>
-      <div class="detail">
-        <h4 class="detail-title">
-          <span>1.1.2 安装hexo</span>
-        </h4>
-        <ul class="ul-detail">
+      <h2 class="title">1. 工具安装</h2>
+      <section class="chaper">
+        <!-- <h3 class="sub-title">1.1 检查工具的安装</h3> -->
+        <ul class="ul-catalog">
           <li>
-            1、创建新的文件夹“blog”, 打开“命令提示行” cd 到指定文件夹
-          </li>
-          <li>
-            2、安装全局hexo：
-            <div class="coding">D:\blog>  cnpm install hexo-cli -g</div>
+            <a href="#">是否注册gitHub、安装node、npm、git Bash、配置SSH</a>
           </li>
           <li>
-            3、查看版本号：
-            <div class="coding">D:\blog>  hexo -v</div>
-          </li>
-          <li>
-            4、初始化博客(必须是空文件)：
-            <div class="coding">D:\blog>  hexo init</div>
-          </li>
-          <li>
-            5、安装局部hexo：
-            <div class="coding">D:\blog>  cnpm install hexo --save</div>
-          </li>
-          <li>
-            6、生成静态文件：
-            <div class="coding">D:\blog>  hexo g</div>
-          </li>
-          <li>
-            7、启动服务器：
-            <div class="coding">D:\blog>  hexo server</div>
-          </li>
-          <li>
-            8、本地预览: loacalhost: 4000
-          </li>
-          <li class="problem">
-            <span>安装报错解决</span>
-          </li>
-          <li>
-            <div class="coding" style="color: red">
-              <p>hexo g</p>
-              <p>Usage: hexo command</p>
-              <p>.</p>
-              <p>.</p>
-              <p>.</p>
-              For more help, you can use 'hexo help [command]' for the detailed information
-              or you can check the docs: http://hexo.io/docs/
-            </div>
-          </li>
-          <li class="resolve">
-            ● method1 ：cnpm uninstall hexo-cli -g
-          </li>
-          <li class="resolve">
-            ● method2 ：手动删除文件夹所有信息
-          </li>
-          <li class="resolve">
-            ● method3 ：重新执行-安装 - 初始化 - 生成 - 启动
+            <a href="#">是否安装Hexo</a>
           </li>
         </ul>
-      </div>
-    </section>
-    <section class="chaper">
-      <h3 class="sub-title">1.2 结合博客UI构建更新博客</h3>
-      <ul class="ul-catalog">
-        <li>
-          <a href="#">git clone博客UI主题并优化相关配置</a>
-        </li>
-        <li>
-          <a href="#">创建文章并发布</a>
-        </li>
-      </ul>
-      <div class="detail">
-        <h4 class="detail-title">
-          <span>1.2.1 修改配置上线</span>
-        </h4>
-        <ul class="ul-detail">
+        <div class="detail">
+          <h4 class="detail-title">
+            <span id="one">1.1、 配置SSH</span>
+          </h4>
+          <ul class="ul-detail">
+            <li>
+              1、打开git bash 面板
+            </li>
+            <li>
+              2、关联githup账户：
+              <div class="coding">$ git config - -global user.username "githup用户名"</div>
+            </li>
+            <li>
+              3、关联邮箱：
+              <div class="coding">$ git config - -global user.email "your_email@example.com"   再三个回车</div>
+            </li>
+            <li>
+              4、检查本地是否有SSH Key(公钥)存在：
+              <div class="coding">$ cd ~/.ssh</div>
+            </li>
+            <li>
+              5、生成新的SSH Key：
+              <div class="coding">$ ssh-keygen -t rsa -C "your_email@example.com"   后面直接按回车</div>
+            </li>
+            <li>6、打开id_rsa.pub： 在.ssh文件夹，找密钥id_rsa.pub文件， 复制key</li>
+            <li>7、复制ssh key：点githup头像, Settings -> SSH and GPG keys -> New SSH key中, 粘贴即可</li>
+            <li>8、检查连接： ssh -T git@github.com</li>
+          </ul>
+        </div>
+        <div class="detail">
+          <h4 class="detail-title">
+            <span id="two">1.2、 安装hexo</span>
+          </h4>
+          <ul class="ul-detail">
+            <li>
+              1、创建新的文件夹“blog”, 打开“命令提示行” cd 到指定文件夹
+            </li>
+            <li>
+              2、安装全局hexo：
+              <div class="coding">D:\blog>  cnpm install hexo-cli -g</div>
+            </li>
+            <li>
+              3、查看版本号：
+              <div class="coding">D:\blog>  hexo -v</div>
+            </li>
+            <li>
+              4、初始化博客(必须是空文件)：
+              <div class="coding">D:\blog>  hexo init</div>
+            </li>
+            <li>
+              5、安装局部hexo：
+              <div class="coding">D:\blog>  cnpm install hexo --save</div>
+            </li>
+            <li>
+              6、生成静态文件：
+              <div class="coding">D:\blog>  hexo g</div>
+            </li>
+            <li>
+              7、启动服务器：
+              <div class="coding">D:\blog>  hexo server</div>
+            </li>
+            <li>
+              8、本地预览: loacalhost: 4000
+            </li>
+            <li class="problem">
+              <span>安装报错解决</span>
+            </li>
+            <li>
+              <div class="coding" style="color: red">
+                <p>hexo g</p>
+                <p>Usage: hexo command</p>
+                <p>.</p>
+                <p>.</p>
+                <p>.</p>
+                For more help, you can use 'hexo help [command]' for the detailed information
+                or you can check the docs: http://hexo.io/docs/
+              </div>
+            </li>
+            <li class="resolve">
+              ● method1 ：cnpm uninstall hexo-cli -g
+            </li>
+            <li class="resolve">
+              ● method2 ：手动删除文件夹所有信息
+            </li>
+            <li class="resolve">
+              ● method3 ：重新执行-安装 - 初始化 - 生成 - 启动
+            </li>
+          </ul>
+        </div>
+      </section>
+      <h2 class="title">2. 博客UI构建</h2>
+      <section class="chaper">
+        <!-- <h3 class="sub-title">1.2 结合博客UI构建更新博客</h3> -->
+        <ul class="ul-catalog">
           <li>
-            1、选择博客UI并下载：<a href="https://hexo.io/themes/">Hexo的官网主题专栏 / </a>
-            <a href="https://theme-next.iissnan.com/getting-started.html">NexT主题</a>
-            <div class="coding">$ git clone 主题github地址'</div>
+            <a href="#">git clone博客UI主题并优化相关配置</a>
           </li>
           <li>
-            2、修改站点配置文件：（若不借助博客ui,直接在初始化的blog文件中操作）
-            <p>● 文件名区别：</p>
-            <p style="padding-left: 15px">站点配置文件：文件根目录下的_config.yml</p>
-            <p style="padding-left: 15px">主题配置文件：主题目录下的_config.yml</p>
-            <div class="coding">
-              <p>server:</p>
-              <p style="padding-left: 25px">port: 5000</p>
-              <p style="padding-left: 25px">compress: true</p>  
-              <p style="padding-left: 25px">header: true</p>
-              <p>server:</p>
-              <p>language: zh-Hans</p>
-              <p>theme: huxblog</p>
-              <p>deploy: </p>
-              <p style="padding-left: 25px">type: git</p>
-              <p style="padding-left: 25px">repo: 发布的https的git地址  或者   ssh的git地址</p>
-              <p style="padding-left: 25px">branch: master</p>
-            </div>
-          </li>
-          <li>
-            3、修改主题配置文件：
-            <div class="coding">
-              <p>highlight_theme:  normal | night | night yilia | night eighties | night blue | night bright</p>
-              <p>menu:</p>
-              <p style="padding-left: 25px">home: / || home</p>
-              <p style="padding-left: 25px">categories: /categories</p>
-              <p style="padding-left: 25px">archives: /archives</p>
-              <p style="padding-left: 25px">tags: /tags</p>
-              <p style="padding-left: 25px">about: /about</p>
-              <p style="padding-left: 25px">commonweal: /404</p>
-            </div>
-          </li>
-          <li>
-            4、git部署插件：
-            <div class="coding"> npm install hexo-deployer-git --save</div>
-          </li>
-          <li>
-            5、发布：
-            <p style="padding-left: 15px">a、清除缓存： <span class="code">hexo clean</span></p>
-            <p style="padding-left: 15px">b、静态文件： <span class="code">hexo generate （简写：hexo g ）</span></p>
-            <p style="padding-left: 15px">c、启服务器： <span class="code">hexo server （简写：hexo s ）</span></p>
-            <p style="padding-left: 15px">d、部署文件： <span class="code">hexo deploy （简写：hexo d）</span></p>
-          </li>
-          <li class="problem">
-            <span>发布报错解决</span>
-          </li>
-          <li>
-            <div class="coding" style="color: red">
-              <p>Usage: hexo command</p>
-              <p>commands</p>
-              <p style="padding-left: 12px">clean Remove...</p>
-              <p style="padding-left: 12px">config Get or Set ...</p>
-            </div>
-          </li>
-          <li class="resolve">
-            ● method1 ：cnpm install hexo-server --save再执行 hexo generate
-          </li>
-          <li>
-            <div class="coding" style="color: red">
-              <p>hexo 部署到 github 上，css、js 文件加载不出来</p>
-            </div>
-          </li>
-          <li class="resolve">
-            ● method1 ：站点配置文件的 root 后面写你 github 仓库的名字，前后斜杠都不能省！
-            <p><span class="code">root: /github 仓库的名字/</span></p>
-          </li>
-          <li>
-            6、组合命令发布：
-            <p style="padding-left: 15px">a、清除缓存： <span class="code">hexo clean</span></p>
-            <p style="padding-left: 15px">b、生成并本地预览：<span class="code">hexo s -g</span></p>
-            <p style="padding-left: 15px">c、生成并上传： <span class="code">hexo d -g</span></p>
-            <p style="padding-left: 15px">d、打开： <span class="code">name.github.io</span></p>
+            <a href="#">创建文章并发布</a>
           </li>
         </ul>
-      </div>
-      <div class="detail">
-        <h4 class="detail-title">
-          <span>1.2.2 hexo页面命令</span>
-        </h4>
-        <ul class="ul-detail">
-          <li>
-            1、新建导航页面
-            <div class="coding">
-              <p>$ hexo new page 'categories'</p>
-              <p>$ hexo new page 'archives'</p>
-              <p>$ hexo new page 'tags'</p>
-              <p>$ hexo new page 'about'</p>
-            </div>
-          </li>
-          <li>
-            2、新建文章
-            <div class="coding">$ hexo new 'my-first-blog'</div>
-          </li>
-          <li>
-            3、新建页面：
-            <div class="coding">$ hexo new pageName'</div>
-          </li>
-          <li>
-            4、已有页面： 粘贴至source -> _posts -
-          </li>
-        </ul>
-      </div>
-    </section>
+        <div class="detail">
+          <h4 class="detail-title">
+            <span id="three">2.1、 修改ui配置</span>
+          </h4>
+          <ul class="ul-detail">
+            <li>
+              1、选择博客UI并下载：<a href="https://hexo.io/themes/">Hexo的官网主题专栏 / </a>
+              <a href="https://theme-next.iissnan.com/getting-started.html">NexT主题</a>
+              <div class="coding">$ git clone 主题github地址'</div>
+            </li>
+            <li>
+              2、修改站点配置文件：（若不借助博客ui,直接在初始化的blog文件中操作）
+              <p>● 文件名区别：</p>
+              <p style="padding-left: 15px">站点配置文件：文件根目录下的_config.yml</p>
+              <p style="padding-left: 15px">主题配置文件：主题目录下的_config.yml</p>
+              <div class="coding">
+                <p>server:</p>
+                <p style="padding-left: 25px">port: 5000</p>
+                <p style="padding-left: 25px">compress: true</p>  
+                <p style="padding-left: 25px">header: true</p>
+                <p>server:</p>
+                <p>language: zh-Hans</p>
+                <p>theme: huxblog</p>
+                <p>deploy: </p>
+                <p style="padding-left: 25px">type: git</p>
+                <p style="padding-left: 25px">repo: 发布的https的git地址  或者   ssh的git地址</p>
+                <p style="padding-left: 25px">branch: master</p>
+              </div>
+            </li>
+            <li>
+              3、修改主题配置文件：
+              <div class="coding">
+                <p>highlight_theme:  normal | night | night yilia | night eighties | night blue | night bright</p>
+                <p>menu:</p>
+                <p style="padding-left: 25px">home: / || home</p>
+                <p style="padding-left: 25px">categories: /categories</p>
+                <p style="padding-left: 25px">archives: /archives</p>
+                <p style="padding-left: 25px">tags: /tags</p>
+                <p style="padding-left: 25px">about: /about</p>
+                <p style="padding-left: 25px">commonweal: /404</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="detail">
+          <h4 class="detail-title">
+            <span id="four">2.2、 本地部署上线</span>
+          </h4>
+          <ul class="ul-detail">
+            <li>
+              1、git部署插件：
+              <div class="coding"> npm install hexo-deployer-git --save</div>
+            </li>
+            <li>
+              2、发布：
+              <p style="padding-left: 15px">a、清除缓存： <span class="code">hexo clean</span></p>
+              <p style="padding-left: 15px">b、静态文件： <span class="code">hexo generate （简写：hexo g ）</span></p>
+              <p style="padding-left: 15px">c、启服务器： <span class="code">hexo server （简写：hexo s ）</span></p>
+              <p style="padding-left: 15px">d、部署文件： <span class="code">hexo deploy （简写：hexo d）</span></p>
+            </li>
+            <li>
+              3、组合命令发布：
+              <p style="padding-left: 15px">a、清除缓存： <span class="code">hexo clean</span></p>
+              <p style="padding-left: 15px">b、生成并本地预览：<span class="code">hexo s -g</span></p>
+              <p style="padding-left: 15px">c、生成并上传： <span class="code">hexo d -g</span></p>
+              <p style="padding-left: 15px">d、打开： <span class="code">name.github.io</span></p>
+            </li>
+            <li class="problem">
+              <span>发布报错解决</span>
+            </li>
+            <li>
+              <div class="coding" style="color: red">
+                <p>Usage: hexo command</p>
+                <p>commands</p>
+                <p style="padding-left: 12px">clean Remove...</p>
+                <p style="padding-left: 12px">config Get or Set ...</p>
+              </div>
+            </li>
+            <li class="resolve">
+              ● method1 ：cnpm install hexo-server --save再执行 hexo generate
+            </li>
+            <li>
+              <div class="coding" style="color: red">
+                <p>hexo 部署到 github 上，css、js 文件加载不出来</p>
+              </div>
+            </li>
+            <li class="resolve">
+              ● method1 ：站点配置文件的 root 后面写你 github 仓库的名字，前后斜杠都不能省！
+              <p><span class="code">root: /github 仓库的名字/</span></p>
+            </li>
+           
+          </ul>
+        </div>
+        <div class="detail">
+          <h4 class="detail-title">
+            <span id="five">2.3、 hexo页面命令</span>
+          </h4>
+          <ul class="ul-detail">
+            <li>
+              1、新建导航页面
+              <div class="coding">
+                <p>$ hexo new page 'categories'</p>
+                <p>$ hexo new page 'archives'</p>
+                <p>$ hexo new page 'tags'</p>
+                <p>$ hexo new page 'about'</p>
+              </div>
+            </li>
+            <li>
+              2、新建文章
+              <div class="coding">$ hexo new 'my-first-blog'</div>
+            </li>
+            <li>
+              3、新建页面：
+              <div class="coding">$ hexo new pageName'</div>
+            </li>
+            <li>
+              4、已有页面： 粘贴至source -> _posts -
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
   </div>
 </body>
 </html>

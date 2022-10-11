@@ -90,6 +90,12 @@ h6 a {
   padding: 0;
 }
 
+.bg .bg-right {
+  float: right;
+  width: 200px;
+  right: 0;
+}
+
 .sidebar-container .catalog-toggle {
   font-size: 1.8rem;
   color: #000;
@@ -158,19 +164,19 @@ code {
   font-size: 20px;
 }
 
-.chaper .sub-title{
+.bg .sub-title{
   color: #595959;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
 }
 
-.chaper .detail-title {
+.bg .detail-title {
   margin: 25px;
   border-bottom: 1px solid #2871bb;
 }
 
-.chaper .detail-title span {
+.bg .detail-title span {
   font-size: 15px;
   display: inline-block;
   font-weight: bold;
@@ -183,12 +189,12 @@ code {
 }
 
 /* 目录ul */
-.chaper ul.ul-catalog {
+.bg ul.ul-catalog {
   list-style-type: circle;
   margin-bottom: 0px;
 }
 
-.chaper ul.ul-catalog li a {
+.bg ul.ul-catalog li a {
   text-decoration: none;
   word-wrap: break-word;
   font-size: 12px;
@@ -200,17 +206,17 @@ code {
 }
 
 /* 详情ul */
-.chaper ul.ul-detail {
+.bg ul.ul-detail {
   list-style-type: none;
   margin-bottom: 0px;
 }
 
-.chaper ul.ul-detail li {
+.bg ul.ul-detail li {
   font-size: 14px;
   line-height: 40px;
 }
 
-.chaper ul.ul-detail li .coding{
+.bg ul.ul-detail li .coding{
   font-size: 13px;
   background: #1E1E1E;
   color: #DCDCDC;
@@ -220,17 +226,17 @@ code {
   margin-right: 100px;
 }
 
-.chaper ul.ul-detail li.problem {
+.bg ul.ul-detail li.problem {
   border-bottom: 1px solid rgba(255, 2, 2, 0.6);
   margin: 20px 25px 30px 0;
   line-height: 20px;
 }
 
-.chaper ul.ul-detail li.resolve {
+.bg ul.ul-detail li.resolve {
   color: #2871bb;
 }
 
-.chaper ul.ul-detail li.problem span {
+.bg ul.ul-detail li.problem span {
   font-size: 13px;
   display: inline-block;
   font-weight: bold;
@@ -241,14 +247,14 @@ code {
   border-top-left-radius: 3px;
 }
 
-.chaper .code {
+.bg .code {
   background-color: #fff5f5;
   color: #ff502c;
   font-size: 12px;
   padding: 4px 10px;
 }
 
-.chaper .blockquotes {
+.bg .blockquotes {
   padding: 20px;
   background-color: #f7f7f7;
   border-left: 6px solid #ced1d3;
@@ -258,7 +264,7 @@ code {
   margin: 25px;
 }
 
-.chaper .blockquotes-line {
+.bg .blockquotes-line {
   padding: 20px;
   background-color: #f7f7f7;
   border-left: 6px solid #ced1d3;
