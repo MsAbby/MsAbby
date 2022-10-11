@@ -22,17 +22,31 @@ tags:
 
 <body>
     <div class="bg">
-        <div class="tips">
-            <a href="#one">1. 利用脚手架初始化项目</a><br/>
-            <a href="#two">2. npx命令介绍</a><br/>
-            <a href="#three">3. yarn命令介绍</a><br/>
-            <a href="#four">4. 导入react</a><br/>
-            <a href="#five">5. createElement()问题</a><br/>
-            <a href="#six">6. jsx学习</a><br/>
-            <a href="#seven">7. 为什么脚手架可以使用jsx语法</a><br/>
-            <a href="#eight">8. jsx语法注意事项</a><br/>
-            <a href="#nine">9. jsx 嵌入js 表达式</a><br/>
-            <a href="#ten">10. jsx 条件渲染</a><br/>
+        <div class="tips" style="display: flex; ">
+            <div style="flex: 1;">
+                <a href="#one">1. 利用脚手架初始化项目</a><br/>
+                <a href="#two">2. npx命令介绍</a><br/>
+                <a href="#three">3. yarn命令介绍</a><br/>
+                <a href="#four">4. 导入react</a><br/>
+                <a href="#five">5. createElement()问题</a><br/>
+                <a href="#six">6. JSX - jsx学习</a><br/>
+                <a href="#seven">7.  JSX - 为什么脚手架可以使用jsx语法</a><br/>
+                <a href="#eight">8.  JSX - jsx语法注意事项</a><br/>
+                <a href="#nine">9.  JSX - jsx 嵌入js 表达式</a><br/>
+                <a href="#ten">10.  JSX - jsx 条件渲染 、列表渲染 、 样式处理</a><br/>
+            </div>
+            <div style="flex: 1;">
+                <a href="#eleven">11. 组件化</a><br/>
+                <!-- <a href="#two">2. npx命令介绍</a><br/>
+                <a href="#three">3. yarn命令介绍</a><br/>
+                <a href="#four">4. 导入react</a><br/>
+                <a href="#five">5. createElement()问题</a><br/>
+                <a href="#six">6. jsx学习</a><br/>
+                <a href="#seven">7. 为什么脚手架可以使用jsx语法</a><br/>
+                <a href="#eight">8. jsx语法注意事项</a><br/>
+                <a href="#nine">9. jsx 嵌入js 表达式</a><br/>
+                <a href="#ten">10. sx 条件渲染 、列表渲染 、 样式处理</a><br/> -->
+            </div>
           </div>
         <h2 class="title"> I. 什么是react</h2>
 
@@ -147,9 +161,13 @@ tags:
         <ul class="ul-detail">
             <li>
                 <div class="tips">
+                    <div></div>
                     1. 是javascript xml简写<br/>
                     2. 优势： 声明式语法更直观<br/>
                     3. 优势： 降低了学习成本， 提高了开发效率<br/>
+                    4. jsx 是react 的核心内容<br/>
+                    5. jsx 表示在js代码中写html, 是react 声明式的体现<br/>
+                    6. react 完全利用js语言自身的能力来编写UI， 而不是造轮子的方式增强html功能<br/>
                 </div>
             </li>
             <li>
@@ -190,14 +208,25 @@ tags:
         </h4>
 
         <ul class="ul-detail">
-            <li> 定义：  { js表达式  }</li>
+            <li> 定义：  { js表达式  } </li>
         </ul>
 
         <h4 class="detail-title">
-            <span id="ten">jsx 条件渲染</span>
+            <span id="ten">jsx 条件渲染 、列表渲染 、 样式处理</span>
         </h4>
         <ul class="ul-detail">
             <li>1. 条件渲染： if else  /   三元表达式    / 逻辑与运算符 </li>
+            <li>2. 列表渲染： 数组的 map 方法 （避免使用索引号作为key）</li>
+            <li>3. 样式处理：  <br/ >
+                <p> ● 行内样式 - style</p>
+                <div class="coding">
+                    style = 双括号， 属性之间逗号隔开
+                </div>
+                <p style="color: red"> ●  类名 - className</p>
+                <div class="coding">
+                    className="bg"
+                </div>
+            </li>
         </ul>
     </div>
 </body>
