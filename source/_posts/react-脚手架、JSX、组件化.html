@@ -42,7 +42,7 @@ tags:
                 <a href="#fourteen">14. 组件化- 有状态组件 和 无状态组件</a><br/>
                 <a href="#fifteen">15. 组件化-state和 setState</a><br/>
                 <a href="#sixteen">16. 组件化-事件绑定中 this的指向解决方案</a><br/>
-                <a href="#seven">7. 为什么脚手架可以使用jsx语法</a><br/>
+                <a href="#seventeen">17. 组件化 - 表单处理</a><br/>
                 <a href="#eight">8. jsx语法注意事项</a><br/>
                 <a href="#nine">9. jsx 嵌入js 表达式</a><br/>
                 <a href="#ten">10. sx 条件渲染 、列表渲染 、 样式处理</a><br/>
@@ -399,6 +399,62 @@ tags:
                                     <p style="text-indent:40px;"> )</p>
                                 <p style="text-indent:30px;"> }</p>
                             <p style="text-indent:20px;"> }</p>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="seventeen">组件化-表单处理</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        <h6>1. 受控组件: 其值 受到react的控制</h6>
+                        <div style="text-indent: 20px;">a、 关于传统表单：  html 中表单元素可以输入的， 即可以维护自己的可变状态</div>
+                        <div style="text-indent: 20px;">b、 关于react数据：  react 可变数据同意保存在 state中， 通过setState 维护可变状态</div>
+                        <div style="text-indent: 20px;">c、 结合：  将react 的 state  和 表单元素的 value 绑定在一起<span style="color: red">由state的值来控制表单元素的值 </span></div>
+                        <div class="coding">
+                            <p style="color: rgb(255, 106, 0)">... type="text" value={ this.state.value } onChange={ this.handelChange}... </p>
+                        </div>
+                        <div style="text-indent: 20px;">
+                            d、 有多个表单元素时， 优化表单元素的步骤,  一个事件处理程序处理多个表单元素
+                            <div style="text-indent: 40px;">1、 第一步： 给表单元素添加 name属性， 名称与state相同</div>
+                            <div style="text-indent: 40px;">2、 第二步： 根据 元素类型 获取对应属性及其值</div>
+                            <div style="text-indent: 40px;">3、 第三步： change事件处理程序中通过 [name] 来修改对应的state</div>
+                            <div class="coding">
+                                <p style="text-indent: 10px;">handelChange = e => { </p>
+                                    <p style="text-indent: 20px;">const target = e.target</p>
+                                    <p style="text-indent:20px; color: rgb(127, 127, 127)">// 根据类型获取值</p>
+                                    <p style="text-indent:20px;">const value = target.type === 'checkbox' ? target.checked: target.value</p>
+                                    <p style="text-indent:20px; color: rgb(127, 127, 127)">// 获取name</p>
+                                    <p style="text-indent:20px; color: rgb(255, 106, 0)">const name = target.name</p>
+                                    <p style="text-indent:20px; color: rgb(255, 106, 0)">this.setState({</p>
+                                    <p style="text-indent:30px; color: rgb(255, 106, 0)"> [name]: value</p>
+                                    <p style="text-indent:20px;">})</p>
+                                <p style="text-indent:10px;"> }</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h6>2. 非受控组件： 借助ref 使用原生DOM方式来获取表单元素值</h6>
+                        <div style="text-indent: 20px;">a、 ref：  获取 DOM 对象 或组件</div>
+                        <div style="text-indent: 20px;">
+                            b、 使用步骤： 
+                            <div style="text-indent: 40px;">1、 第一步： 创建ref 对象 -  React.createRef（）</div>
+                            <div class="coding">
+                                <p style="text-indent: 20px;">constructor(){</p>
+                                <p style="text-indent:40px;">super()</p>
+                                <p style="text-indent:40px; color: rgb(255, 106, 0)">this.txtRef = React.createRef()</p>
+                                <p style="text-indent:20px;"> }</p>
+                            </div>
+                            <div style="text-indent: 40px;">2、 第二步： 将创建好的ref对象 关联到表单元素上</div>
+                            <div class="coding">
+                                <p style="text-indent:40px; color: rgb(255, 106, 0)">... type="text" ref={this.txtRef}...</p>
+                            </div>
+                            <div style="text-indent: 40px;">3、 第三步： 通过ref 对象获取到文本狂的值</div>
+                            <div class="coding">
+                                <p style="text-indent:40px; color: rgb(255, 106, 0)">this.txtRef.current.value</p>
+                            </div>
                         </div>
                     </li>
                 </ul>
