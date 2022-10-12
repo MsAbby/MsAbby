@@ -1,0 +1,472 @@
+---
+layout: post
+title: "react 基础1"
+subtitle: "Whether:sunny / Mood:am-normal, pm-bad / Especially: 1"
+date: 2022-10-11 14:24:00
+author: "lsm"
+header-img: "/img/banner6.jpg"
+tags:
+- 前端开发
+- 工具
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="bg">
+        <div id="is-top">top</div>
+        <div class="tips" style="display: flex; ">
+            <div style="flex: 1;">
+                <a href="#one">1. 利用脚手架初始化项目</a><br />
+                <a href="#two">2. npx命令介绍</a><br />
+                <a href="#three">3. yarn命令介绍</a><br />
+                <a href="#four">4. 导入react</a><br />
+                <a href="#five">5. createElement()问题</a><br />
+                <a href="#six">6. JSX - jsx学习</a><br />
+                <a href="#seven">7. JSX - 为什么脚手架可以使用jsx语法</a><br />
+                <a href="#eight">8. JSX - jsx语法注意事项</a><br />
+                <a href="#nine">9. JSX - jsx 嵌入js 表达式</a><br />
+            </div>
+            <div style="flex: 1;">
+                <a href="#ten">10. JSX - jsx 条件渲染 、列表渲染 、 样式处理</a><br />
+                <a href="#eleven">11. 组件化 - 组件的特点</a><br />
+                <a href="#twelve">12. 组件化 - 组件的两种创建方式</a><br/>
+                <a href="#thirteen">13. 组件化 - 组件的事件处理</a><br/>
+                <a href="#fourteen">14. 组件化- 有状态组件 和 无状态组件</a><br/>
+                <a href="#fifteen">15. 组件化-state和 setState</a><br/>
+                <a href="#sixteen">16. 组件化-事件绑定中 this的指向解决方案</a><br/>
+                <a href="#seventeen">17. 组件化 - 表单处理</a><br/>
+            </div>
+        </div>
+
+        <section>
+            <h2 class="title"> I. 什么是react</h2>
+            <article>
+                用于构建用户界面的javascript库<br />
+                起源于 facebook</br>
+
+                <h4 class="detail-title">
+                    <span>特点</span>
+                </h4>
+                1. 声明式： 只要描述结构，渲染ui过程由react来做的 <br>
+                2. 基于组件： 最重要 <br>
+                3. 学习一次，随处使用： 开发web应用、 开发移动端原生应用、 还有vr开发 <br>
+            </article>
+        </section>
+
+        <section>
+            <h2 class="title">II. react 基本使用</h2>
+            <article>
+                1. createElement <br />
+                <ul class="ul-detail">
+                    <li>
+                        <div class="coding">
+                            1. const title = React.<span style="color: yellow">createElement('p', {title: '属性'}, id:
+                                'p1'
+                                )</span>
+                        </div>
+                        <p>第一个参数：要创建的react元素名称</p>
+                        <p>第二个参数： 元素的属性（可以多个）</p>
+                        <p>第三个参数及以后： 该元素的子节点</p>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                2. ReactDOM.render <br />
+                <ul class="ul-detail">
+                    <li>
+                        <div class="coding">
+                            <span style="color: yellow"> ReactDOM.render</span> (el, document.getElementById('root'))
+                        </div>
+                        <p>第一个参数：要创建的react元素名称</p>
+                        <p>第二个参数： DOM对象， 用于渲染到页面中的位置</p>
+                    </li>
+                </ul>
+            </article>
+        </section>
+
+        <section>
+            <h2 class="title">III. react 脚手架的使用</h2>
+            <article>
+                <h4 class="detail-title">
+                    <span id="one">利用脚手架初始化项目</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 初始化项目： <span style="color: red">npx create-react-app my-app</span>
+                    </li>
+                    <li>
+                        2. 启动项目： <span style="color: red">npm start</span>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="two">npx命令介绍</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 原先： <span style="color: green">先全局安装脚手架（全局安装长时间不用没有意义）， 才能使用脚手架提供的命令初始化项目</span>
+                    </li>
+                    <li>
+                        2. 现在： <span style="color: rgb(245, 71, 100)">无需全局安装脚手架， 可直接使用脚手架提供的命令</span>
+                    </li>
+                    <li>
+                        3. 推荐： <span style="color: red">npx create-react-app my-app</span>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="three">yarn命令介绍</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 起源： facebook发布
+                    </li>
+                    <li>
+                        2. 特点： 快速、安全、可靠
+                    </li>
+                    <li>
+                        3. 安装： <span style="color: red">yarn add 包名称</span>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="four">导入react</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>1. 导入 react 和 react-dom包</li>
+                    <li>
+                        <div class="coding">
+                            import React from 'react'
+                            import ReactDOM from 'react-dom'
+                        </div>
+                    </li>
+                    <li>2. 调用 React.<span style="color: rgb(245, 71, 100)">createElement</span>创建元素</li>
+                    <li>3. 调用 <span style="color: rgb(245, 71, 100)"> ReactDOM.render</span> 渲染元素到页面中</li>
+                </ul>
+            </article>
+        </section>
+
+        <section>
+            <h2 class="title"> IV. JSX学习</h2>
+            <article>
+                <h4 class="detail-title">
+                    <span id="five">createElement()问题</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li style="color: rgb(255, 157, 0)">1. 繁琐不简洁</li>
+                    <li style="color: rgb(255, 157, 0)">2. 不直观， 一眼看不出结构</li>
+                    <li style="color: rgb(255, 157, 0)">3. 不优雅， 用户体验不爽</li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="six">jsx学习</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        <div class="tips">
+                            <div></div>
+                            1. 是javascript xml简写<br />
+                            2. 优势： 声明式语法更直观<br />
+                            3. 优势： 降低了学习成本， 提高了开发效率<br />
+                            4. jsx 是react 的核心内容<br />
+                            5. jsx 表示在js代码中写html, 是react 声明式的体现<br />
+                            6. react 完全利用js语言自身的能力来编写UI， 而不是造轮子的方式增强html功能<br />
+                        </div>
+                    </li>
+                    <li>
+                        1. jsx创建元素：<span style="color: red"> const title = 《h1》 新建元素 《/h1》</span>
+                    </li>
+                    <li>
+                        2. 渲染元素(react17)：<span style="color: red"> ReactDOM.render(title, document.getElementById('root'))</span>
+                    </li>
+                    <li>
+                        3. 渲染元素(react18)：<span style="color: red"> ReactDOM.render(title, document.getElementById('root'))</span>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="seven">为什么脚手架可以使用jsx语法</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>1. jsx 不是ecmascript 标准语法， 是ecmascript 的<span style="color: red">语法扩展</span></li>
+                    <li>2. 需要babel 编译处理，才能在浏览器环境中使用</li>
+                    <li>3. create-react-app 中已经默认有该配置， 所以无需手动配置</li>
+                    <li>4. 编译包： @babel/preset-react</li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="eight">jsx语法注意事项</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 属性名： 驼峰命名法
+                    </li>
+                    <li>
+                        2. 特殊属性： class -> className; for -> htmlFor; tabindex ->tabIndex
+                    </li>
+                    <li>
+                        <span style="color: red">3. 推荐： 小括号包裹 ‘ jsx ’，避免自动插入分号</span>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="nine">jsx 嵌入js 表达式</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li> 定义： { js表达式 } </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="ten">jsx 条件渲染 、列表渲染 、 样式处理</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>1. 条件渲染： if else / 三元表达式 / 逻辑与运算符 </li>
+                    <li>2. 列表渲染： 数组的 map 方法 （避免使用索引号作为key）</li>
+                    <li>3. 样式处理： <br />
+                        <p> ● 行内样式 - style</p>
+                        <div class="coding">
+                            style = 双括号， 属性之间逗号隔开
+                        </div>
+                        <p style="color: red"> ● 类名 - className</p>
+                        <div class="coding">
+                            className="bg"
+                        </div>
+                    </li>
+                </ul>
+            </article>
+        </section>
+
+        <section>
+            <h2 class="title"> V. 组件</h2>
+            <article>
+                <h4 class="detail-title">
+                    <span id="eleven">组件化-组件特点</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>1. 特点： <span style="color: red"> 可复用、 独立 、 可组合</span> </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="twelve">组件化-组件的两种创建方式</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        <h6>1. 函数创建组件:  用函数（或肩头函数）创建的组件 </h6>
+                        <div style="text-indent: 20px;">a、 约定1：  函数名称 - <span style="color: red"> 必须大写字母开头</span></div>
+                        <div style="text-indent: 20px;">b、 约定2：  必须有<span style="color: red"> 返回值</span></div>
+                        <div style="text-indent: 20px;">c、 约定3：   返回值为 null, 不渲染任何内容</div>
+                        <div style="text-indent: 20px;">d、 渲染组件：  ReactDOM.render(<组件名 />, document.getElementById('root'))</div>
+                    </li>
+                    <li>
+                        <h6>2. class创建组件: 用ES6的class创建的组件 </h6>
+                        <div style="text-indent: 20px;">a、 约定1：  类名称 - <span style="color: red"> 必须大写字母开头</span></div>
+                        <div style="text-indent: 20px;">b、 约定2：  类组件<span style="color: red"> 应该继承React.Component父类</span>， 从而可以使用父类中提供的方法和属性</div>
+                        <div style="text-indent: 20px;">c、 约定3：  必须有<span style="color: red"> render（）方法</span></div>
+                        <div style="text-indent: 20px;">d、 约定4：  render方法必须有<span style="color: red"> 返回值</span></div>
+                        <div style="text-indent: 20px;">e、 渲染组件：  ReactDOM.render(<组件名 />, document.getElementById('root'))</div>
+                    </li>
+                    <li>
+                        <h6>3. 组件抽离： 放到独立的js文件中</h6>
+                        <div style="text-indent: 20px;">a、 第一步：  创建 js 文件</div>
+                        <div style="text-indent: 20px;">b、 第二步：  js文件中 -  导入React </div>
+                        <div style="text-indent: 20px;">c、 第三步：  js文件中 -  创建组件</div>
+                        <div style="text-indent: 20px;">d、 第四步：  js文件中 -  导出该组件</div>
+                        <div style="text-indent: 20px;">e、 第五步：  需要使用的js中 - 导入该组件</div>
+                        <div style="text-indent: 20px;">f、 第六步：  需要使用的js中 - 渲染该组件</div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="thirteen">组件化-组件的事件处理</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        <h6>1. 事件绑定:  与DOM事件语法相似</h6>
+                        <div style="text-indent: 20px;">a、 语法：  <span style="color: red"> on + 事件名称 = { 事件处理程序 }</span></div>
+                        <div style="text-indent: 20px;">b、 注意：  <span style="color: red"> 事件采用驼峰命名法</span></div>
+                        <div style="text-indent: 20px;">c、 注意： ` 函数组件 `的事件处理程序 - 没有this ( <span style="color: red"> onClick = {handelClick} </span>)</div>
+                    </li>
+                    <li>
+                        <h6>2. 获取事件对象： e </h6>
+                        <div style="text-indent: 20px;">a、 渠道：  <span style="color: red"> { 事件处理程序（e） } 的 参数</span></div>
+                        <div style="text-indent: 20px;">b、 名称：  react中的事件对象叫 - <span style="color: red"> 合成事件（对象）</span></div>
+                        <div style="text-indent: 20px;">c、 特点： ` 合成对象 `的事件处理程序 -  <span style="color: red"> 兼容所有浏览器 </span></div>
+                        <div style="text-indent: 20px;">d、 事件处理程序： <span style="color: red"> 这里面的` this ` 是undefined </span></div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="fourteen">组件化-有状态组件 和 无状态组件</span>
+                </h4>
+                <p style="text-indent: 25px; color: rgb(5, 76, 188)">状态： state -> 数据</p>
+                <ul class="ul-detail">
+                    <li>
+                        <h6>1. 无状态组件:  函数组件</h6>
+                        <div style="text-indent: 20px;">a、 定义：  没有自己的状态， <span style="color: red"> 只负责数据的展示</span> (需要配合hooks才能更新UI)</div>
+                    </li>
+                    <li>
+                        <h6>2. 有状态组件： 类组件 </h6>
+                        <div style="text-indent: 20px;">a、 定义：  有自己的状态<span style="color: red"> 负责更新UI</span></div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="fifteen">组件化-state和 setState</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        <h6>1. state基本使用</h6>
+                        <div style="text-indent: 20px;">a、 定义： state即数据 <span style="color: red"> 组件内部私有数据</span></div>
+                        <div style="text-indent: 20px;">b、 结构： state值是对象</div>
+                        <div style="text-indent: 20px;">c、 获取状态：  <span style="color: red"> this.state.value</span></div>
+                    </li>
+                    <li>
+                        <h6>2. setState()修改状态 : 思想  -   数据驱动视图的体现 </h6>
+                        <div style="text-indent: 20px;">a、 定义： 状态是可变的</div>
+                        <div style="text-indent: 20px;">b、 语法： this.setState({ 修改的key: 修改后的value})</div>
+                        <div style="text-indent: 20px;">c、 注意： 不能直接修改state中的值</div>
+                        <div style="text-indent: 20px;">d、 作用： 修改state   和  更新 ui</div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="sixteen">组件化-事件绑定中 this的指向解决方案</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        <h6>1. 箭头函数</h6>
+                        <div style="text-indent: 20px;">a、 特点： <span style="color: red"> 箭头函数有自身不绑定 this的特点， 取决于外部环境</span></div>
+                        <div style="text-indent: 20px;">b、 外部环境： 这里指向了<span style="color: red"> render()方法， render中的this为组件实例，可以获取setState()</span></div>
+                        <div class="coding">
+                            <p style="color: rgb(255, 106, 0)">... onClick = { () => { this.handelClick }} ... </p>
+                        </div>
+                    </li>
+                    <li>
+                        <h6>2. bind方法 :  Function.prototpe.bind</h6>
+                        <div style="text-indent: 20px;">a、 定义： 利用ES5中的bind方法， 将事件处理程序中的 “this” 与组件实例绑定在一起</div>
+                        <div style="text-indent: 20px;">b、 语法： this.handelClick = this.handelClick.bind(this)</div>
+                        <div class="coding">
+                            <p style="text-indent: 10px;">class Hello extends React.Component { </p>
+                                <p style="text-indent: 20px;">constructor() { </p>
+                                    <p style="text-indent:30px;">super() </p>
+                                    <p style="text-indent:30px; color: rgb(255, 106, 0)">this.handelClick = this.handelClick.bind(this)</p>
+                                <p style="text-indent:20px;"> }</p>
+                                
+                                <p style="text-indent:20px;">render() {</p>
+                                    <p style="text-indent:30px;">return(</p>
+                                        <p style="text-indent:40px;">... onClick = { this.handelClick } ... </p>
+                                    <p style="text-indent:40px;"> )</p>
+                                <p style="text-indent:30px;"> }</p>
+                            <p style="text-indent:20px;"> }</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h6>3. class实例方法 : 箭头函数形式的class 实例方法</h6>
+                        <div style="text-indent: 20px;">a、 定义： 利用箭头函数形式的class实例方法</div>
+                        <div style="text-indent: 20px;">b、 注意： 语法是试验性的语法， 但是由于有babel的存在可以直接使用</div>
+                        <div class="coding">
+                            <p style="text-indent: 10px;">class Hello extends React.Component { </p>
+                                <p style="text-indent: 20px;">constructor() { </p>
+                                    <p style="text-indent:30px;">super() </p>
+                                <p style="text-indent:20px;"> }</p>
+                                <p style="text-indent:20px; color: rgb(255, 106, 0)">handelClick = () => {</p>
+                                    <p style="text-indent:30px; color: rgb(255, 106, 0)">console.log('111')</p>
+                                <p style="text-indent:20px; color: rgb(255, 106, 0)"> }</p>
+                                <p style="text-indent:20px;">render() {</p>
+                                    <p style="text-indent:30px;">return(</p>
+                                        <p style="text-indent:40px;">... onClick = { this.handelClick } ... </p>
+                                    <p style="text-indent:40px;"> )</p>
+                                <p style="text-indent:30px;"> }</p>
+                            <p style="text-indent:20px;"> }</p>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="seventeen">组件化-表单处理</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        <h6>1. 受控组件: 其值 受到react的控制</h6>
+                        <div style="text-indent: 20px;">a、 关于传统表单：  html 中表单元素可以输入的， 即可以维护自己的可变状态</div>
+                        <div style="text-indent: 20px;">b、 关于react数据：  react 可变数据同意保存在 state中， 通过setState 维护可变状态</div>
+                        <div style="text-indent: 20px;">c、 结合：  将react 的 state  和 表单元素的 value 绑定在一起<span style="color: red">由state的值来控制表单元素的值 </span></div>
+                        <div class="coding">
+                            <p style="color: rgb(255, 106, 0)">... type="text" value={ this.state.value } onChange={ this.handelChange}... </p>
+                        </div>
+                        <div style="text-indent: 20px;">
+                            d、 有多个表单元素时， 优化表单元素的步骤,  一个事件处理程序处理多个表单元素
+                            <div style="text-indent: 40px;">1、 第一步： 给表单元素添加 name属性， 名称与state相同</div>
+                            <div style="text-indent: 40px;">2、 第二步： 根据 元素类型 获取对应属性及其值</div>
+                            <div style="text-indent: 40px;">3、 第三步： change事件处理程序中通过 [name] 来修改对应的state</div>
+                            <div class="coding">
+                                <p style="text-indent: 10px;">handelChange = e => { </p>
+                                    <p style="text-indent: 20px;">const target = e.target</p>
+                                    <p style="text-indent:20px; color: rgb(127, 127, 127)">// 根据类型获取值</p>
+                                    <p style="text-indent:20px;">const value = target.type === 'checkbox' ? target.checked: target.value</p>
+                                    <p style="text-indent:20px; color: rgb(127, 127, 127)">// 获取name</p>
+                                    <p style="text-indent:20px; color: rgb(255, 106, 0)">const name = target.name</p>
+                                    <p style="text-indent:20px; color: rgb(255, 106, 0)">this.setState({</p>
+                                    <p style="text-indent:30px; color: rgb(255, 106, 0)"> [name]: value</p>
+                                    <p style="text-indent:20px;">})</p>
+                                <p style="text-indent:10px;"> }</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h6>2. 非受控组件： 借助ref 使用原生DOM方式来获取表单元素值</h6>
+                        <div style="text-indent: 20px;">a、 ref：  获取 DOM 对象 或组件</div>
+                        <div style="text-indent: 20px;">
+                            b、 使用步骤： 
+                            <div style="text-indent: 40px;">1、 第一步： 创建ref 对象 -  React.createRef（）</div>
+                            <div class="coding">
+                                <p style="text-indent: 20px;">constructor(){</p>
+                                <p style="text-indent:40px;">super()</p>
+                                <p style="text-indent:40px; color: rgb(255, 106, 0)">this.txtRef = React.createRef()</p>
+                                <p style="text-indent:20px;"> }</p>
+                            </div>
+                            <div style="text-indent: 40px;">2、 第二步： 将创建好的ref对象 关联到表单元素上</div>
+                            <div class="coding">
+                                <p style="text-indent:40px; color: rgb(255, 106, 0)">... type="text" ref={this.txtRef}...</p>
+                            </div>
+                            <div style="text-indent: 40px;">3、 第三步： 通过ref 对象获取到文本狂的值</div>
+                            <div class="coding">
+                                <p style="text-indent:40px; color: rgb(255, 106, 0)">this.txtRef.current.value</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+        </section>
+    </div>
+</body>
+<script>
+    var isTop = document.getElementById('is-top')
+    isTop.addEventListener("click", function() {
+        window.scrollTo(0, 0)
+    })
+</script>
+</html>

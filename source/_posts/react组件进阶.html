@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "react 基础1"
+title: "react 组件进阶"
 subtitle: "Whether:sunny / Mood:am-normal, pm-bad / Especially: 1"
-date: 2022-10-11 14:24:00
+date: 2022-10-12 14:24:00
 author: "lsm"
 header-img: "/img/banner6.jpg"
 tags:
@@ -22,177 +22,192 @@ tags:
 
 <body>
     <div class="bg">
+        <div id="is-top">top</div>
         <div class="tips" style="display: flex; ">
             <div style="flex: 1;">
-                <a href="#one">1. 利用脚手架初始化项目</a><br />
-                <a href="#two">2. npx命令介绍</a><br />
-                <a href="#three">3. yarn命令介绍</a><br />
-                <a href="#four">4. 导入react</a><br />
-                <a href="#five">5. createElement()问题</a><br />
+                <a href="#one">1. 组件通信 - props</a><br />
+                <a href="#two">2. 组件通信 - 3种基本方式</a><br />
+                <a href="#three">3. 组件通信 - context </a><br />
+                <a href="#four">4. 组件的生命周期 - 概述</a><br />
+                <a href="#five">5. 组件的生命周期 - 三个阶段</a><br />
                 <a href="#six">6. JSX - jsx学习</a><br />
                 <a href="#seven">7. JSX - 为什么脚手架可以使用jsx语法</a><br />
                 <a href="#eight">8. JSX - jsx语法注意事项</a><br />
                 <a href="#nine">9. JSX - jsx 嵌入js 表达式</a><br />
-                <a href="#ten">10. JSX - jsx 条件渲染 、列表渲染 、 样式处理</a><br />
             </div>
             <div style="flex: 1;">
+                <a href="#ten">10. JSX - jsx 条件渲染 、列表渲染 、 样式处理</a><br />
                 <a href="#eleven">11. 组件化 - 组件的特点</a><br />
                 <a href="#twelve">12. 组件化 - 组件的两种创建方式</a><br/>
                 <a href="#thirteen">13. 组件化 - 组件的事件处理</a><br/>
                 <a href="#fourteen">14. 组件化- 有状态组件 和 无状态组件</a><br/>
-                <a href="#fifteen">15. 组件化-state和 setState</a><br/>
+                <a href="#fifteen">15. 组件化 - state和 setState</a><br/>
                 <a href="#sixteen">16. 组件化-事件绑定中 this的指向解决方案</a><br/>
                 <a href="#seventeen">17. 组件化 - 表单处理</a><br/>
-                <a href="#eight">8. jsx语法注意事项</a><br/>
-                <a href="#nine">9. jsx 嵌入js 表达式</a><br/>
-                <a href="#ten">10. sx 条件渲染 、列表渲染 、 样式处理</a><br/>
             </div>
         </div>
 
         <section>
-            <h2 class="title"> I. 什么是react</h2>
+            <h2 class="title">I. 组件通信</h2>
             <article>
-                用于构建用户界面的javascript库<br />
-                起源于 facebook</br>
-
                 <h4 class="detail-title">
-                    <span>特点</span>
+                    <span id="one">props</span>
                 </h4>
-                1. 声明式： 只要描述结构，渲染ui过程由react来做的 <br>
-                2. 基于组件： 最重要 <br>
-                3. 学习一次，随处使用： 开发web应用、 开发移动端原生应用、 还有vr开发 <br>
-            </article>
-        </section>
-
-        <section>
-            <h2 class="title">II. react 基本使用</h2>
-            <article>
-                1. createElement <br />
                 <ul class="ul-detail">
                     <li>
-                        <div class="coding">
-                            1. const title = React.<span style="color: yellow">createElement('p', {title: '属性'}, id:
-                                'p1'
-                                )</span>
+                        <h6>1. props作用：  “ 接收 ”<span style="color: red">传递给组件的数据</span></h6>
+                    </li>
+                    <li>
+                        <h6>2. props特点：</h6>
+                        <div style="text-indent: 40px;">1、 可以传递任意类型的数据</div>
+                        <div style="text-indent: 40px;">2、 只读对象</div>
+                        <div style="text-indent: 40px; color:rgb(245, 71, 100)">3、 针对类组件： 若写构造函数，要将props传给super(props), 否则无法在构造函数constructor中获取props</div>
+                    </li>
+                    <li>
+                        <h6>3. 传递数据：<span style="color: red">给组件标签添加属性</span></h6>
+                    </li>
+                    <li>
+                        <h6>4. 接收数据：</h6>
+                        <div style="text-indent: 40px; color: red">1、 函数组件 -  通过函数参数props接收</div>
+                        <div style="text-indent: 40px; color: blue">2、 类组件 - 通过this.props接收数据</div>
+                    </li>
+                    <li>
+                        <h6>5. props深入：</h6>
+                        <div style="text-indent: 40px;">1、 children属性： 
+                            <div style="text-indent: 80px;"> ● 表示组件标签的子节点。 标签有子节点，props就具有该属性</div>
+                            <div style="text-indent: 80px;"> ● 值-可以使任意值（文本，组件、函数、jsx等）</div>
                         </div>
-                        <p>第一个参数：要创建的react元素名称</p>
-                        <p>第二个参数： 元素的属性（可以多个）</p>
-                        <p>第三个参数及以后： 该元素的子节点</p>
-                    </li>
-                </ul>
-            </article>
-            <article>
-                2. ReactDOM.render <br />
-                <ul class="ul-detail">
-                    <li>
-                        <div class="coding">
-                            <span style="color: yellow"> ReactDOM.render</span> (el, document.getElementById('root'))
+                        <div style="text-indent: 40px;">2、 props默认值：defaultProps
+                            <div style="text-indent: 80px;"> ● 写法： 组件名.defaultProps = { pageSize: 10 }</div>
+                            <div style="text-indent: 80px;"> ● 作用： 在未传props时生效</div>
                         </div>
-                        <p>第一个参数：要创建的react元素名称</p>
-                        <p>第二个参数： DOM对象， 用于渲染到页面中的位置</p>
-                    </li>
-                </ul>
-            </article>
-        </section>
-
-        <section>
-            <h2 class="title">III. react 脚手架的使用</h2>
-            <article>
-                <h4 class="detail-title">
-                    <span id="one">利用脚手架初始化项目</span>
-                </h4>
-                <ul class="ul-detail">
-                    <li>
-                        1. 初始化项目： <span style="color: red">npx create-react-app my-app</span>
-                    </li>
-                    <li>
-                        2. 启动项目： <span style="color: red">npm start</span>
-                    </li>
-                </ul>
-            </article>
-            <article>
-                <h4 class="detail-title">
-                    <span id="two">npx命令介绍</span>
-                </h4>
-                <ul class="ul-detail">
-                    <li>
-                        1. 原先： <span style="color: green">先全局安装脚手架（全局安装长时间不用没有意义）， 才能使用脚手架提供的命令初始化项目</span>
-                    </li>
-                    <li>
-                        2. 现在： <span style="color: rgb(245, 71, 100)">无需全局安装脚手架， 可直接使用脚手架提供的命令</span>
-                    </li>
-                    <li>
-                        3. 推荐： <span style="color: red">npx create-react-app my-app</span>
-                    </li>
-                </ul>
-            </article>
-            <article>
-                <h4 class="detail-title">
-                    <span id="three">yarn命令介绍</span>
-                </h4>
-                <ul class="ul-detail">
-                    <li>
-                        1. 起源： facebook发布
-                    </li>
-                    <li>
-                        2. 特点： 快速、安全、可靠
-                    </li>
-                    <li>
-                        3. 安装： <span style="color: red">yarn add 包名称</span>
-                    </li>
-                </ul>
-            </article>
-            <article>
-                <h4 class="detail-title">
-                    <span id="four">导入react</span>
-                </h4>
-                <ul class="ul-detail">
-                    <li>1. 导入 react 和 react-dom包</li>
-                    <li>
-                        <div class="coding">
-                            import React from 'react'
-                            import ReactDOM from 'react-dom'
+                        <div style="text-indent: 40px;">3、 props校验：  propTypes
+                            <div style="text-indent: 80px;"> ● 方式： 创建组件时， 就指定props 的类型和格式</div>
+                            <div style="text-indent: 80px;"> ● 作用： 捕获错误、 增加组件的健壮性</div>
+                            <div style="text-indent: 80px;"> ● 作约束规则： array、bool、func、number、object、string</div>
+                            <div style="text-indent: 80px;"> ● 必填项： isRequiRed</div>
+                            <div style="text-indent: 80px;"> ● 特定结构的对象： shape({})</div>
+                            <div style="text-indent: 80px;"> ● 第一步： 安装包: prop-types</div>
+                            <div style="text-indent: 80px;"> ● 第二步： 导入prop-types包（import propTypes from 'prop-types'）</div>
+                            <div style="text-indent: 80px;"> ● 第三步： 添加校验规则： 组件名.propTypes = { color: propTypes.array.isRequiRed}</div>
                         </div>
                     </li>
-                    <li>2. 调用 React.<span style="color: rgb(245, 71, 100)">createElement</span>创建元素</li>
-                    <li>3. 调用 <span style="color: rgb(245, 71, 100)"> ReactDOM.render</span> 渲染元素到页面中</li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="two">组件通信三种基本方式</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        <h6>1. 父组件 - 子组件：</h6>
+                        <div style="text-indent: 40px;">1、 准备数据： 父组件中提供数据state</div>
+                        <div style="text-indent: 40px;">2、 传递方式： 子组件的属性传递该数据</div>
+                        <div style="text-indent: 40px;">3、 获取数据： 子组件通过 props 获取</div>
+                    </li>
+                    <li>
+                        <h6>2. 子组件 - 父组件：</h6>
+                        <div style="text-indent: 40px;">1、 思路： 利用回调函数</div>
+                        <div style="text-indent: 40px;">2、 准备回调函数： 父组件提供回调函数（用于接收数据）</div>
+                        <div style="text-indent: 40px;">3、 传递方式：  子组件的属性传递</div>
+                        <div style="text-indent: 40px;">4、 子组件传参：  子组件利用this.props.属性名（传递的数据）</div>
+                    </li>
+                    <li>
+                        <h6>3. 兄弟组件：</h6>
+                        <div style="text-indent: 40px;">1、 状态提升思路： 将” 共享状态 “ 提升到 最近的“ 公共父组件 ” 管理该状态</div>
+                        <div style="text-indent: 40px;">2、 提供共享状态：   公共父组件提供 「 共享状态 」</div>
+                        <div style="text-indent: 40px;">3、 提供共享状态方法  公共父组件提供 「 可操作共享状态的方法 」/div>
+                        <div style="text-indent: 40px;">4、 接收数据：  子组件通过props 「 接收状态 」和 「 接收 操作状态的方法 」</div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="three">context</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li><h6>1. 作用： 跨组件传递数据（远方亲戚-嵌套多层）</h6></li>
+                    <li>
+                        <h6>2. 使用步骤： </h6>
+                        <div style="text-indent: 40px;">1、 创建： 父组件中 使用<span style="color: red">React.createContext() </span>创建 Provider（提供数据） 和 Consumer（消费数据）组件</div>
+                        <div class="coding" style="margin-left: 40px;">
+                            const { Provider, Consumer } = React.createContext()
+                        </div>
+                        <div style="text-indent: 40px;">2、 组件包裹：  使用<span style="color: red">Provider</span> 组件作为 父节点</div>
+                        <div class="coding" style="margin-left: 40px;">
+                            <p style="text-indent: 10px;">《Provider》</p>
+                                <p style="text-indent: 30px;">《Hello1 /》</p>
+                            <p style="text-indent:10px;">《Provider /》 </p>
+                        </div>
+                        <div style="text-indent: 40px;">3、 传递数据：  <span style="color: red">Provider 上的 value属性</span>表示要传递的数据 </div>
+                        <div class="coding" style="margin-left: 40px;">
+                            <p style="text-indent: 10px;">《Provider value="pink"》</p>
+                        </div>
+                        <div style="text-indent: 40px;">4、 接收数据：  <span style="color: red">调用 Consumer组件</span></div>
+                        <div class="coding" style="margin-left: 40px;">
+                            <p style="text-indent: 10px;">《Consumer》</p>
+                            <p style="text-indent: 30px;">{ data => { data 表示接收到的数据}}</p>
+                            <p style="text-indent: 10px;">《/Consumer》</p>
+                        </div>
+                    </li>
                 </ul>
             </article>
         </section>
 
         <section>
-            <h2 class="title"> IV. JSX学习</h2>
+            <h2 class="title"> II. 组件的生命周期</h2>
             <article>
                 <h4 class="detail-title">
-                    <span id="five">createElement()问题</span>
+                    <span id="five">组件的生命周期 - 概述</span>
                 </h4>
                 <ul class="ul-detail">
-                    <li style="color: rgb(255, 157, 0)">1. 繁琐不简洁</li>
-                    <li style="color: rgb(255, 157, 0)">2. 不直观， 一眼看不出结构</li>
-                    <li style="color: rgb(255, 157, 0)">3. 不优雅， 用户体验不爽</li>
+                    <li>1. 组件生命周期： 组件被创建 到 挂载到页面运行， 再到组件不用时卸载的过程</li>
+                    <li>2. 钩子函数： 生命周期每个阶段会有一些方法被调用，这些方法是「钩子函数」</li>
+                    <li>3. 钩子函数作用： 为开发人员在不同阶段的操作提供了时机</li>
+                    <li style="color: red">4. 只有类组件有生命周期</li>
                 </ul>
             </article>
             <article>
                 <h4 class="detail-title">
-                    <span id="six">jsx学习</span>
+                    <span id="six">组件的生命周期 - 三个阶段</span>
                 </h4>
                 <ul class="ul-detail">
                     <li>
-                        <div class="tips">
-                            <div></div>
-                            1. 是javascript xml简写<br />
-                            2. 优势： 声明式语法更直观<br />
-                            3. 优势： 降低了学习成本， 提高了开发效率<br />
-                            4. jsx 是react 的核心内容<br />
-                            5. jsx 表示在js代码中写html, 是react 声明式的体现<br />
-                            6. react 完全利用js语言自身的能力来编写UI， 而不是造轮子的方式增强html功能<br />
+                        <h6>1. 创建时（挂载阶段）：</h6>
+                        <div style="text-indent: 20px"> ❉ 执行时机： 组件创建时</div>
+                        <div style="text-indent: 20px"> ❉ 执行顺序： constructor() - render() - componentDidMount()</div>
+                        <div class="tips" style="margin-left:40px">
+                           <table>
+                                <tr>
+                                    <td>钩子函数</td>
+                                    <td>执行时机</td>
+                                    <td>作用</td>
+                                </tr>
+                                <tr>
+                                    <td>constructor</td>
+                                    <td>最先执行、组件创建时</td>
+                                    <td>初始化state、 为事件程序绑定this</td>
+                                </tr>
+                                <tr>
+                                    <td>render</td>
+                                    <td>每次组件渲染都会触发</td>
+                                    <td>渲染UI(不能调用setState)</td>
+                                </tr>
+                                <tr>
+                                    <td>componentDidMount</td>
+                                    <td>组件挂载后（完成dom渲染）</td>
+                                    <td>发送网络请求、 进行dom操作</td>
+                                </tr>
+                           </table>
                         </div>
                     </li>
                     <li>
-                        1. jsx创建元素：<span style="color: red"> const title = 《h1》 新建元素 《/h1》</span>
+                        <h6>2. 更新时：</h6>
+                        <div style="text-indent: 20px">11</div>
                     </li>
                     <li>
-                        2. 渲染元素：<span style="color: red"> ReactDOM.render(title, document.getElementById('root'))</span>
+                        <h6>3. 卸载时</h6>
+                        <div style="text-indent: 20px">11</div>
                     </li>
                 </ul>
             </article>
@@ -462,5 +477,11 @@ tags:
         </section>
     </div>
 </body>
+<script>
+    var isTop = document.getElementById('is-top')
+    isTop.addEventListener("click", function() {
+        window.scrollTo(0, 0)
+    })
+</script>
 
 </html>
