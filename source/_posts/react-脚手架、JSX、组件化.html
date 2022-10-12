@@ -358,11 +358,48 @@ tags:
                         <h6>1. 箭头函数</h6>
                         <div style="text-indent: 20px;">a、 特点： <span style="color: red"> 箭头函数有自身不绑定 this的特点， 取决于外部环境</span></div>
                         <div style="text-indent: 20px;">b、 外部环境： 这里指向了<span style="color: red"> render()方法， render中的this为组件实例，可以获取setState()</span></div>
+                        <div class="coding">
+                            <p style="color: rgb(255, 106, 0)">... onClick = { () => { this.handelClick }} ... </p>
+                        </div>
                     </li>
                     <li>
                         <h6>2. bind方法 :  Function.prototpe.bind</h6>
                         <div style="text-indent: 20px;">a、 定义： 利用ES5中的bind方法， 将事件处理程序中的 “this” 与组件实例绑定在一起</div>
                         <div style="text-indent: 20px;">b、 语法： this.handelClick = this.handelClick.bind(this)</div>
+                        <div class="coding">
+                            <p style="text-indent: 10px;">class Hello extends React.Component { </p>
+                                <p style="text-indent: 20px;">constructor() { </p>
+                                    <p style="text-indent:30px;">super() </p>
+                                    <p style="text-indent:30px; color: rgb(255, 106, 0)">this.handelClick = this.handelClick.bind(this)</p>
+                                <p style="text-indent:20px;"> }</p>
+                                
+                                <p style="text-indent:20px;">render() {</p>
+                                    <p style="text-indent:30px;">return(</p>
+                                        <p style="text-indent:40px;">... onClick = { this.handelClick } ... </p>
+                                    <p style="text-indent:40px;"> )</p>
+                                <p style="text-indent:30px;"> }</p>
+                            <p style="text-indent:20px;"> }</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h6>3. class实例方法 : 箭头函数形式的class 实例方法</h6>
+                        <div style="text-indent: 20px;">a、 定义： 利用箭头函数形式的class实例方法</div>
+                        <div style="text-indent: 20px;">b、 注意： 语法是试验性的语法， 但是由于有babel的存在可以直接使用</div>
+                        <div class="coding">
+                            <p style="text-indent: 10px;">class Hello extends React.Component { </p>
+                                <p style="text-indent: 20px;">constructor() { </p>
+                                    <p style="text-indent:30px;">super() </p>
+                                <p style="text-indent:20px;"> }</p>
+                                <p style="text-indent:20px; color: rgb(255, 106, 0)">handelClick = () => {</p>
+                                    <p style="text-indent:30px; color: rgb(255, 106, 0)">console.log('111')</p>
+                                <p style="text-indent:20px; color: rgb(255, 106, 0)"> }</p>
+                                <p style="text-indent:20px;">render() {</p>
+                                    <p style="text-indent:30px;">return(</p>
+                                        <p style="text-indent:40px;">... onClick = { this.handelClick } ... </p>
+                                    <p style="text-indent:40px;"> )</p>
+                                <p style="text-indent:30px;"> }</p>
+                            <p style="text-indent:20px;"> }</p>
+                        </div>
                     </li>
                 </ul>
             </article>
