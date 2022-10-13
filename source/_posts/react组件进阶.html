@@ -30,13 +30,13 @@ tags:
                 <a href="#three">3. 组件通信 - context </a><br />
                 <a href="#four">4. 组件的生命周期 - 概述</a><br />
                 <a href="#five">5. 组件的生命周期 - 三个阶段</a><br />
-                <a href="#six">6. JSX - jsx学习</a><br />
-                <a href="#seven">7. JSX - 为什么脚手架可以使用jsx语法</a><br />
-                <a href="#eight">8. JSX - jsx语法注意事项</a><br />
-                <a href="#nine">9. JSX - jsx 嵌入js 表达式</a><br />
+                <a href="#six">6. 组件的生命周期 - 不常用的三个钩子函数-旧版</a><br />
+                <a href="#seven">7. 组件的生命周期 - 完整版钩子函数-新版</a><br />
+                <a href="#eight">8. 组件复用-概念</a><br />
+                <a href="#nine">9. 组件复用 - render props</a><br />
             </div>
             <div style="flex: 1;">
-                <a href="#ten">10. JSX - jsx 条件渲染 、列表渲染 、 样式处理</a><br />
+                <a href="#ten">10. 组件复用 - 高阶组件（HOC）</a><br />
                 <a href="#eleven">11. 组件化 - 组件的特点</a><br />
                 <a href="#twelve">12. 组件化 - 组件的两种创建方式</a><br/>
                 <a href="#thirteen">13. 组件化 - 组件的事件处理</a><br/>
@@ -158,7 +158,7 @@ tags:
             <h2 class="title"> II. 组件的生命周期</h2>
             <article>
                 <h4 class="detail-title">
-                    <span id="five">组件的生命周期 - 概述</span>
+                    <span id="four">组件的生命周期 - 概述</span>
                 </h4>
                 <ul class="ul-detail">
                     <li>1. 组件生命周期： 组件被创建 到 挂载到页面运行， 再到组件不用时卸载的过程</li>
@@ -169,7 +169,7 @@ tags:
             </article>
             <article>
                 <h4 class="detail-title">
-                    <span id="six">组件的生命周期 - 三个阶段</span>
+                    <span id="five">组件的生命周期 - 三个阶段</span>
                 </h4>
                 <ul class="ul-detail">
                     <li>
@@ -203,150 +203,291 @@ tags:
                     </li>
                     <li>
                         <h6>2. 更新时：</h6>
-                        <div style="text-indent: 20px">11</div>
+                        <div style="text-indent: 20px"> ❉ 执行时机：new props / 调用setState() / 调用forceUpdate()方法</div>
+                        <div style="text-indent: 20px"> ❉ 执行顺序： render() - componentDidUpdate()</div>
+                        <div class="tips" style="margin-left:40px">
+                            <table>
+                                 <tr>
+                                     <td>钩子函数</td>
+                                     <td>执行时机</td>
+                                     <td>作用</td>
+                                 </tr>
+                                
+                                 <tr>
+                                     <td>render</td>
+                                     <td>每次组件渲染都会触发</td>
+                                     <td>渲染UI(不能调用setState)</td>
+                                 </tr>
+                                 <tr>
+                                    <td>componentDidUpdate</td>
+                                    <td>组件更新（完成dom渲染）后</td>
+                                    <td>发送网络请求、 进行dom操作、如果要调用setState() 必须放在if条件中</td>
+                                </tr>
+                            </table>
+                        </div>
                     </li>
                     <li>
                         <h6>3. 卸载时</h6>
-                        <div style="text-indent: 20px">11</div>
-                    </li>
-                </ul>
-            </article>
-            <article>
-                <h4 class="detail-title">
-                    <span id="seven">为什么脚手架可以使用jsx语法</span>
-                </h4>
-                <ul class="ul-detail">
-                    <li>1. jsx 不是ecmascript 标准语法， 是ecmascript 的<span style="color: red">语法扩展</span></li>
-                    <li>2. 需要babel 编译处理，才能在浏览器环境中使用</li>
-                    <li>3. create-react-app 中已经默认有该配置， 所以无需手动配置</li>
-                    <li>4. 编译包： @babel/preset-react</li>
-                </ul>
-            </article>
-            <article>
-                <h4 class="detail-title">
-                    <span id="eight">jsx语法注意事项</span>
-                </h4>
-                <ul class="ul-detail">
-                    <li>
-                        1. 属性名： 驼峰命名法
-                    </li>
-                    <li>
-                        2. 特殊属性： class -> className; for -> htmlFor; tabindex ->tabIndex
-                    </li>
-                    <li>
-                        <span style="color: red">3. 推荐： 小括号包裹 ‘ jsx ’，避免自动插入分号</span>
-                    </li>
-                </ul>
-            </article>
-            <article>
-                <h4 class="detail-title">
-                    <span id="nine">jsx 嵌入js 表达式</span>
-                </h4>
-                <ul class="ul-detail">
-                    <li> 定义： { js表达式 } </li>
-                </ul>
-            </article>
-            <article>
-                <h4 class="detail-title">
-                    <span id="ten">jsx 条件渲染 、列表渲染 、 样式处理</span>
-                </h4>
-                <ul class="ul-detail">
-                    <li>1. 条件渲染： if else / 三元表达式 / 逻辑与运算符 </li>
-                    <li>2. 列表渲染： 数组的 map 方法 （避免使用索引号作为key）</li>
-                    <li>3. 样式处理： <br />
-                        <p> ● 行内样式 - style</p>
-                        <div class="coding">
-                            style = 双括号， 属性之间逗号隔开
+                        <div style="text-indent: 20px"> ❉ 执行时机： 组件从页面中消失</div>
+                        <div class="tips" style="margin-left:40px">
+                            <table>
+                                 <tr>
+                                     <td>钩子函数</td>
+                                     <td>执行时机</td>
+                                     <td>作用</td>
+                                 </tr>
+                                
+                                 <tr>
+                                    <td>componentWillUnmount</td>
+                                    <td>组件卸载（从页面消失）</td>
+                                    <td>执行清理工作（比如： 清理定时器等）</td>
+                                </tr>
+                            </table>
                         </div>
-                        <p style="color: red"> ● 类名 - className</p>
-                        <div class="coding">
-                            className="bg"
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="six">组件的生命周期 - 不常用的三个钩子函数-旧版</span>
+                </h4>
+                <div style="text-indent: 30px">17之后使用： 添加前缀UNSAFE_</div>
+                <ul class="ul-detail">
+                    <li>
+                        <h6>1. 创建时（挂载阶段）：</h6>
+                        <div style="text-indent: 20px"> ❉ 执行顺序： constructor() - <span style="color: red;">componentWillMount()</span> - render() - componentDidMount()</div>
+                        <div class="tips" style="margin-left:40px">
+                           <table>
+                                <tr>
+                                    <td>钩子函数</td>
+                                    <td>执行时机</td>
+                                    <td>废除原因</td>
+                                </tr>
+                                <tr>
+                                    <td>componentWillMount</td>
+                                    <td>最先执行、组件创建时</td>
+                                    <td>从前为了防止白屏提前加载数据（优化结果甚微）， 后期引入了fiber, 任务有优先级之分， render前执行高级任务，容易导致其他任务被打断，被多次执行， 所以render前的will钩子都被废除了</td>
+                                </tr>
+                           </table>
                         </div>
+                    </li>
+                    <li>
+                        <h6>2. 更新时：</h6>
+                        <div style="text-indent: 20px"> ❉ 执行顺序： componentWillReciveProps() - shouldComponentUpdate() - componentWillUpdate() - render()...</div>
+                        <div class="tips" style="margin-left:40px">
+                            <table>
+                                 <tr>
+                                     <td>钩子函数</td>
+                                     <td>执行时机</td>
+                                     <td>废除原因</td>
+                                 </tr>
+                                
+                                 <tr>
+                                     <td>componentWillReciveProps</td>
+                                     <td>初次渲染、props改变</td>
+                                     <td>不稳定： 除了初次渲染、之后只要父组件再次渲染，不管props有没有变化都会触发子组件的该钩子函数</td>
+                                 </tr>
+                                 <tr>
+                                    <td>componentWillUpdate</td>
+                                    <td>props 、state 、和 forceUpdate 都会触发</td>
+                                    <td>不稳定：因为不合理的用法导致被调用多次</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="seven">组件的生命周期 - 完整版钩子函数-新版</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        <h6>1. 创建时（挂载阶段）：</h6>
+                        <div style="text-indent: 20px"> ❉ 执行顺序： constructor() - <span style="color: red">getDerivedStateFromState()</span> - render() - componentDidMount()</div>
+                        <div class="tips" style="margin-left:40px">
+                           <table>
+                                <tr>
+                                    <td>钩子函数</td>
+                                    <td>执行时机</td>
+                                    <td>作用</td>
+                                </tr>
+                                <tr>
+                                    <td>constructor</td>
+                                    <td>最先执行、组件创建时</td>
+                                    <td>初始化state、 为事件程序绑定this</td>
+                                </tr>
+                                <tr>
+                                    <td>getDerivedStateFromState  </td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>render</td>
+                                    <td>每次组件渲染都会触发</td>
+                                    <td>渲染UI(不能调用setState)</td>
+                                </tr>
+                                <tr>
+                                    <td>componentDidMount</td>
+                                    <td>组件挂载后（完成dom渲染）</td>
+                                    <td>发送网络请求、 进行dom操作</td>
+                                </tr>
+                           </table>
+                        </div>
+                    </li>
+                    <li>
+                        <h6>2. 更新时：</h6>
+                        <div style="text-indent: 20px"> ❉ 执行顺序： getDerivedStateFromState - shouldComponentUpdate - render - getSnapshotBeforeUpdate - componentDidUpdate()</div>
+                        <div class="tips" style="margin-left:40px">
+                            <table>
+                                 <tr>
+                                     <td>钩子函数</td>
+                                     <td>执行时机</td>
+                                     <td>作用</td>
+                                 </tr>
+
+                                 <tr>
+                                    <td>getDerivedStateFromState(新增)  </td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>shouldComponentUpdate </td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                 <tr>
+                                     <td>render</td>
+                                     <td>每次组件渲染都会触发</td>
+                                     <td>渲染UI(不能调用setState)</td>
+                                 </tr>
+                                 <tr>
+                                    <td>getSnapshotBeforeUpdate(新增)</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                 <tr>
+                                    <td>componentDidUpdate</td>
+                                    <td>组件更新（完成dom渲染）后</td>
+                                    <td>发送网络请求、 进行dom操作、如果要调用setState() 必须放在if条件中</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </li>
+                    <li>
+                        <h6>3. 卸载时: componentWillUnmount</h6>
+                    </li>
+                </ul>
+            </article>
+            
+        </section>
+        <section>
+            <h2 class="title"> III. 组件的复用</h2>
+            <article>
+                <h4 class="detail-title">
+                    <span id="eight">组件复用-概念</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li> 1. 处理方式： 复用相似的功能 </li>
+                    <li> 2. 复用什么： state && 操作 state的方法 </li>
+                    <li> 3. 两种方式：  render props模式 && 高阶组件 </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="nine">组件复用 - render props</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>1. 创建组件： 将要复用的state && 操作 state的方法封装到这个组件中， 这个组件不渲染任何结构，直接return this.props.render(state)</li>
+                    <li>2. 个人理解： 子组件向父组件传值</li>
+                    <li>3. 渲染UI： 通过函数的返回值作为要渲染的UI内容</li>
+                    <li>4. 替换方案： return this.props.children(state)</li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="ten">组件复用 - 高阶组件（HOC）</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>1. 目的： 实现状态逻辑复用</li>
+                    <li>2. 使用装饰模式： 比如说-手机壳</li>
+                    <li>3. 高阶组价： 相当于手机壳， 实际是一个函数， 接收要包装的组件， 返回增强后的组件</li>
+                    <li>4. 实现方式： 高阶组件内部创建一个类组件，组件中提供复用的状态逻辑， 通过props将状态传递给被包装的组件</li>
+                    <li>5. 实现步骤： 
+                        <div style="text-indent: 20px;">a、 创建函数： 约定名称以with开头</div>
+                        <div style="text-indent: 20px;">b、 指定参数： 指定函数参数，参数是组件名</div>
+                        <div style="text-indent: 20px;">c、 函数内部创建类组件： 指提供复用的逻辑代码，并返回该组件</div>
+                        <div style="text-indent: 20px;">d、 渲染组件： 调用该高阶组件， 传入要增强的组件， 通过返回值拿到要增强的组件， 再渲染在页面中</div>
+                    </li>
+                    <li>6. 存在问题： 组件名一样
+                        <div style="text-indent: 20px;">a、 解决方式：为高阶组件设置 displayName </div>
+                        <div style="text-indent: 20px;">b、 displayName： 设置调试信息 </div>
+                        <div style="text-indent: 20px;" class="coding">
+                            组件名.displayName = `高阶组件名${getDisplayName(传入的组件名)}`
+                        </div>
+                    </li>
+                    <li>7. 传递props： 高阶组件的props往下传递会丢失
+                        <div style="text-indent: 20px;">a、 解决方式：渲染被包装的组件时， 将state和this.props一起传递给组件 </div>
                     </li>
                 </ul>
             </article>
         </section>
 
         <section>
-            <h2 class="title"> V. 组件</h2>
+            <h2 class="title"> IV. react原理</h2>
             <article>
                 <h4 class="detail-title">
-                    <span id="eleven">组件化-组件特点</span>
+                    <span id="eleven">react原理 - setState的异步</span>
                 </h4>
                 <ul class="ul-detail">
-                    <li>1. 特点： <span style="color: red"> 可复用、 独立 、 可组合</span> </li>
+                    <li>1. 更新数据： <span style="color: red"> setState()同步代码中-异步更新，异步代码中-同步更新</span> </li>
+                    <li>2. 可以多次调用setState： <span style="color: red"> 只会触发一次render重新渲染</span></li>
+                    <li>3. 推荐语法： <span style="color: red"> this.setState(（state, props） => {return {}} )</span> : 连续调用可以拿到上一次调用的结果，抛弃了this</li>
+                    <li>4. 第二个参数： <span style="color: red"> setState({key: value}, ()=> {})</span>: 状态更新后，立即执行某个操作 </li>
                 </ul>
             </article>
             <article>
                 <h4 class="detail-title">
-                    <span id="twelve">组件化-组件的两种创建方式</span>
+                    <span id="twelve">react原理 - jsx语法的转化过程</span>
                 </h4>
                 <ul class="ul-detail">
                     <li>
-                        <h6>1. 函数创建组件:  用函数（或肩头函数）创建的组件 </h6>
-                        <div style="text-indent: 20px;">a、 约定1：  函数名称 - <span style="color: red"> 必须大写字母开头</span></div>
-                        <div style="text-indent: 20px;">b、 约定2：  必须有<span style="color: red"> 返回值</span></div>
-                        <div style="text-indent: 20px;">c、 约定3：   返回值为 null, 不渲染任何内容</div>
-                        <div style="text-indent: 20px;">d、 渲染组件：  ReactDOM.render(<组件名 />, document.getElementById('root'))</div>
-                    </li>
-                    <li>
-                        <h6>2. class创建组件: 用ES6的class创建的组件 </h6>
-                        <div style="text-indent: 20px;">a、 约定1：  类名称 - <span style="color: red"> 必须大写字母开头</span></div>
-                        <div style="text-indent: 20px;">b、 约定2：  类组件<span style="color: red"> 应该继承React.Component父类</span>， 从而可以使用父类中提供的方法和属性</div>
-                        <div style="text-indent: 20px;">c、 约定3：  必须有<span style="color: red"> render（）方法</span></div>
-                        <div style="text-indent: 20px;">d、 约定4：  render方法必须有<span style="color: red"> 返回值</span></div>
-                        <div style="text-indent: 20px;">e、 渲染组件：  ReactDOM.render(<组件名 />, document.getElementById('root'))</div>
-                    </li>
-                    <li>
-                        <h6>3. 组件抽离： 放到独立的js文件中</h6>
-                        <div style="text-indent: 20px;">a、 第一步：  创建 js 文件</div>
-                        <div style="text-indent: 20px;">b、 第二步：  js文件中 -  导入React </div>
-                        <div style="text-indent: 20px;">c、 第三步：  js文件中 -  创建组件</div>
-                        <div style="text-indent: 20px;">d、 第四步：  js文件中 -  导出该组件</div>
-                        <div style="text-indent: 20px;">e、 第五步：  需要使用的js中 - 导入该组件</div>
-                        <div style="text-indent: 20px;">f、 第六步：  需要使用的js中 - 渲染该组件</div>
+                        <h6>1. 语法糖： jsx 是 createElement()方法的语法糖（简化的语法） </h6>
+                        <h6>2. 转化： jsx 语法被@babel/preset-react 编译成createElement()的方法 </h6>
+                        <div style="text-indent: 20px;">c、 编译成createElement转化过程： <span style="color: red"> 被转化成react元素</span></div>
+                        <div style="text-indent: 20px;">b、 react元素： 普通的js对象， 描述页面中的内容， 里面有type\props属性</div>
                     </li>
                 </ul>
             </article>
             <article>
                 <h4 class="detail-title">
-                    <span id="thirteen">组件化-组件的事件处理</span>
+                    <span id="thirteen">react原理 - react更新机制</span>
                 </h4>
                 <ul class="ul-detail">
                     <li>
-                        <h6>1. 事件绑定:  与DOM事件语法相似</h6>
-                        <div style="text-indent: 20px;">a、 语法：  <span style="color: red"> on + 事件名称 = { 事件处理程序 }</span></div>
-                        <div style="text-indent: 20px;">b、 注意：  <span style="color: red"> 事件采用驼峰命名法</span></div>
-                        <div style="text-indent: 20px;">c、 注意： ` 函数组件 `的事件处理程序 - 没有this ( <span style="color: red"> onClick = {handelClick} </span>)</div>
-                    </li>
-                    <li>
-                        <h6>2. 获取事件对象： e </h6>
-                        <div style="text-indent: 20px;">a、 渠道：  <span style="color: red"> { 事件处理程序（e） } 的 参数</span></div>
-                        <div style="text-indent: 20px;">b、 名称：  react中的事件对象叫 - <span style="color: red"> 合成事件（对象）</span></div>
-                        <div style="text-indent: 20px;">c、 特点： ` 合成对象 `的事件处理程序 -  <span style="color: red"> 兼容所有浏览器 </span></div>
-                        <div style="text-indent: 20px;">d、 事件处理程序： <span style="color: red"> 这里面的` this ` 是undefined </span></div>
+                        <h6>1. 过程:  父组件更新时， 会重新渲染它下面的所有子组件及其孙子组件</h6>
                     </li>
                 </ul>
             </article>
             <article>
                 <h4 class="detail-title">
-                    <span id="fourteen">组件化-有状态组件 和 无状态组件</span>
+                    <span id="fourteen">react原理 - 对组件进行性能优化</span>
                 </h4>
-                <p style="text-indent: 25px; color: rgb(5, 76, 188)">状态： state -> 数据</p>
                 <ul class="ul-detail">
                     <li>
-                        <h6>1. 无状态组件:  函数组件</h6>
-                        <div style="text-indent: 20px;">a、 定义：  没有自己的状态， <span style="color: red"> 只负责数据的展示</span> (需要配合hooks才能更新UI)</div>
+                        <h6>1. 减轻state:  只存储和组件渲染有关的数据</h6>
+                        <div style="text-indent: 20px;">a、 注意： 对于需要在多个方法中用到的数据， 可以放在this中（比如定时器id）</div>
                     </li>
                     <li>
-                        <h6>2. 有状态组件： 类组件 </h6>
-                        <div style="text-indent: 20px;">a、 定义：  有自己的状态<span style="color: red"> 负责更新UI</span></div>
+                        <h6>2. 避免不必要的重新渲染： （父组件更新 - 子组件及其孙辈组件也会更新） </h6>
+                        <div style="text-indent: 20px;">a、 解决方式：  钩子函数<span style="color: red"> shouldComponentUpdate(nextProps, nextState)</span></div>
+                        <div style="text-indent: 20px;">b、 使用：  钩子函数<span style="color: red"> 返回值true / false 决定组件是否重新渲染</span></div>
                     </li>
                 </ul>
             </article>
             <article>
                 <h4 class="detail-title">
-                    <span id="fifteen">组件化-state和 setState</span>
+                    <span id="fifteen">react原理 - 对组件进行性能优化</span>
                 </h4>
                 <ul class="ul-detail">
                     <li>
@@ -366,7 +507,7 @@ tags:
             </article>
             <article>
                 <h4 class="detail-title">
-                    <span id="sixteen">组件化-事件绑定中 this的指向解决方案</span>
+                    <span id="sixteen">react原理 - 虚拟DOM 和 Diff算法</span>
                 </h4>
                 <ul class="ul-detail">
                     <li>

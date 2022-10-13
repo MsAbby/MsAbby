@@ -1,0 +1,64 @@
+---
+layout: post
+title: "react工作注意事项"
+subtitle: "Whether:sunny / Mood:am-normal, pm-bad / Especially: 1"
+date: 2022-10-13 14:24:00
+author: "lsm"
+header-img: "/img/banner6.jpg"
+tags:
+- 前端开发
+- 工具
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="bg">
+        <div id="is-top">top</div>
+        <div class="tips" style="display: flex; ">
+            <div style="flex: 1;">
+                <a href="#one">1. 组件通信 - props</a><br />
+            </div>
+            <div style="flex: 1;">
+                <a href="#ten">10. JSX - jsx 条件渲染 、列表渲染 、 样式处理</a><br />
+            </div>
+        </div>
+
+        <section>
+            <h2 class="title">I. componentDidUpdate中</h2>
+            <article>
+                <h4 class="detail-title">
+                    <span id="one">调用setState()时： </span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        <h6>1. 条件： 必须放在一个 if 条件中</h6>
+                        <h6>2. 原因： 直接调用setState, 会导致递归更新，超过最大内存</h6>
+                        <h6>3. 解决方案： 比较更新前后的 props 是否相同， 来决定是否重新渲染组件</h6>
+                        <div style="text-indent: 40px;">1、 拿取更新前后props： componentDidUpdate<span style="color: red;">（prevProps）</span></div>
+                        <div class="tips" style="margin-left:40px">
+                            if (prevProps.count !== this.props.count) {  this. setState({}) }
+                        </div>
+
+                    </li>
+                </ul>
+            </article>
+        </section>
+    </div>
+</body>
+<script>
+    var isTop = document.getElementById('is-top')
+    isTop.addEventListener("click", function() {
+        window.scrollTo(0, 0)
+    })
+</script>
+
+</html>

@@ -291,3 +291,6 @@ code {
   right: 0;
   color: white;
 }
+table tr {
+  border-bottom: 1.2px solid rgb(18, 106, 160);
+}
