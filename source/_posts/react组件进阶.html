@@ -33,17 +33,15 @@ tags:
                 <a href="#six">6. 组件的生命周期 - 不常用的三个钩子函数-旧版</a><br />
                 <a href="#seven">7. 组件的生命周期 - 完整版钩子函数-新版</a><br />
                 <a href="#eight">8. 组件复用-概念</a><br />
-                <a href="#nine">9. 组件复用 - render props</a><br />
             </div>
             <div style="flex: 1;">
+                <a href="#nine">9. 组件复用 - render props</a><br />
                 <a href="#ten">10. 组件复用 - 高阶组件（HOC）</a><br />
-                <a href="#eleven">11. 组件化 - 组件的特点</a><br />
-                <a href="#twelve">12. 组件化 - 组件的两种创建方式</a><br/>
-                <a href="#thirteen">13. 组件化 - 组件的事件处理</a><br/>
-                <a href="#fourteen">14. 组件化- 有状态组件 和 无状态组件</a><br/>
-                <a href="#fifteen">15. 组件化 - state和 setState</a><br/>
-                <a href="#sixteen">16. 组件化-事件绑定中 this的指向解决方案</a><br/>
-                <a href="#seventeen">17. 组件化 - 表单处理</a><br/>
+                <a href="#eleven">11. react原理 - setState的异步</a><br />
+                <a href="#twelve">12. react原理 - jsx语法的转化过程</a><br/>
+                <a href="#thirteen">13. react原理 - react更新机制</a><br/>
+                <a href="#fourteen">14. react原理 - 对组件进行性能优化</a><br/>
+                <a href="#fifteen">15. react原理 - 虚拟dom 和diff算法</a><br/>
             </div>
         </div>
 
@@ -479,56 +477,39 @@ tags:
                         <div style="text-indent: 20px;">a、 注意： 对于需要在多个方法中用到的数据， 可以放在this中（比如定时器id）</div>
                     </li>
                     <li>
-                        <h6>2. 避免不必要的重新渲染： （父组件更新 - 子组件及其孙辈组件也会更新） </h6>
+                        <h6>2. 避免不必要的重新渲染shouldComponentUpdate： （父组件更新 - 子组件及其孙辈组件也会更新） </h6>
                         <div style="text-indent: 20px;">a、 解决方式：  钩子函数<span style="color: red"> shouldComponentUpdate(nextProps, nextState)</span></div>
                         <div style="text-indent: 20px;">b、 使用：  钩子函数<span style="color: red"> 返回值true / false 决定组件是否重新渲染</span></div>
                     </li>
-                </ul>
-            </article>
-            <article>
-                <h4 class="detail-title">
-                    <span id="fifteen">react原理 - 对组件进行性能优化</span>
-                </h4>
-                <ul class="ul-detail">
                     <li>
-                        <h6>1. state基本使用</h6>
-                        <div style="text-indent: 20px;">a、 定义： state即数据 <span style="color: red"> 组件内部私有数据</span></div>
-                        <div style="text-indent: 20px;">b、 结构： state值是对象</div>
-                        <div style="text-indent: 20px;">c、 获取状态：  <span style="color: red"> this.state.value</span></div>
-                    </li>
-                    <li>
-                        <h6>2. setState()修改状态 : 思想  -   数据驱动视图的体现 </h6>
-                        <div style="text-indent: 20px;">a、 定义： 状态是可变的</div>
-                        <div style="text-indent: 20px;">b、 语法： this.setState({ 修改的key: 修改后的value})</div>
-                        <div style="text-indent: 20px;">c、 注意： 不能直接修改state中的值</div>
-                        <div style="text-indent: 20px;">d、 作用： 修改state   和  更新 ui</div>
+                        <h6>3. 纯组件pureComponent： </h6>
+                        <div style="text-indent: 20px;">a、 定义：  类组件继承pureComponent类， 函数组件使用memo方法</div>
+                        <div style="text-indent: 20px;">b、 使用：  对输入数据进行浅层比较</div>
+                        <div style="text-indent: 20px;">c、 浅层对比：  引用类型-比较地址是否相等； 值类型-比较值是否相等</div>
+                        <div style="text-indent: 20px;">d、 操作注意：  原则上要创建新数据， 不要使用push 、unshift等直接修改当前数组/对象</div>
                     </li>
                 </ul>
             </article>
             <article>
                 <h4 class="detail-title">
-                    <span id="sixteen">react原理 - 虚拟DOM 和 Diff算法</span>
+                    <span id="fifteen">react原理 - 虚拟dom 和diff算法</span>
                 </h4>
                 <ul class="ul-detail">
                     <li>
-                        <h6>1. 箭头函数</h6>
-                        <div style="text-indent: 20px;">a、 特点： <span style="color: red"> 箭头函数有自身不绑定 this的特点， 取决于外部环境</span></div>
-                    </li>
-                   
-                </ul>
-            </article>
-            <article>
-                <h4 class="detail-title">
-                    <span id="seventeen">组件化-表单处理</span>
-                </h4>
-                <ul class="ul-detail">
-                    <li>
-                        <h6>1. 受控组件: 其值 受到react的控制</h6>
-                        <div style="text-indent: 20px;">a、 关于传统表单：  html 中表单元素可以输入的， 即可以维护自己的可变状态</div>
+                        <h6>1. react更新视图的思想： 只要state变化就重新渲染视图</h6>
+                        <div style="text-indent: 20px;">a、 问题： 组件中只有一个dom更新时， 整个组件都要重新渲染到页面中， 性能低</div>
+                        <div style="text-indent: 20px;">b、 理想状态： 部分更新， 只更新变化的地方</div>
+                        <div style="text-indent: 20px;">c、 react如何做到部分更新的 ？</div>
                     </li>
                     <li>
-                        <h6>2. 非受控组件： 借助ref 使用原生DOM方式来获取表单元素值</h6>
-                        <div style="text-indent: 20px;">a、 ref：  获取 DOM 对象 或组件</div>
+                        <h6>2.虚拟DOM： 本质上就是js对象， 描述页面上看到的内容UI </h6>
+                        <div style="text-indent: 20px;">a、 第一步：  初次渲染时， react会根据state， 创建一个虚拟dom对象树</div>
+                        <div style="text-indent: 20px;">b、 第二步：  数据变化时， 根据新的数据， 创建新的虚拟dom对象树</div>
+                        <div style="text-indent: 20px;">c、 第三步：  使用diff算法对比，得到跟心的内容</div>
+                        <div style="text-indent: 20px;">d、 第四步：  只将变化的内容更新到dom中，重新渲染到页面</div>
+                    </li>
+                    <li>
+                        <h6>3.Diff算法： </h6>
                     </li>
                 </ul>
             </article>

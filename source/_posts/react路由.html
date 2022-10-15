@@ -1,0 +1,168 @@
+---
+layout: post
+title: "react 路由"
+subtitle: "Whether:sunny / Mood:am-normal, pm-bad / Especially: 1"
+date: 2022-10-12 14:24:00
+author: "lsm"
+header-img: "/img/banner6.jpg"
+tags:
+- 前端开发
+- 工具
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="bg">
+        <div id="is-top">top</div>
+        <div class="tips" style="display: flex; ">
+            <div style="flex: 1;">
+                <a href="#one">1. react路由 - 简介</a><br />
+                <a href="#two">2. react路由 - 基本使用</a><br />
+                <a href="#three">3. react路由 - Router组件 </a><br />
+                <a href="#four">4. react路由 - Link组件</a><br />
+                <a href="#five">5. react路由 - Route组件</a><br />
+                <a href="#six">6. react路由 - 执行过程</a><br />
+                <a href="#seven">7. react路由 - 编程式导航</a><br />
+                <a href="#eight">8. react路由 - 默认路由</a><br />
+            </div>
+        </div>
+
+        <section>
+            <h2 class="title">I. react路由 - 简介</h2>
+            <article>
+                <h4 class="detail-title">
+                    <span id="one"> react路由 - 简介</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        <h6>1. 功能：  从一个页面导航到另一个页面</h6>
+                    </li>
+                    <li>
+                        <h6>2. 映射规则：url路径和组件的对应关系</h6>
+                    </li>
+                </ul>
+            </article>
+        </section>
+
+        <section>
+            <h2 class="title"> II. react路由 - 基本使用</h2>
+            <article>
+                <h4 class="detail-title">
+                    <span id="two">react路由 - 基本使用</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>1. 安装： yarn add react-router-dom</li>
+                    <li>
+                        2. 导入核心组件： Router / Route / Link
+                        <div style="text-indent: 20px" class="coding">
+                            import { BrowerRouter as Router, Route, Link } from  'react-router-dom'
+                        </div>
+                    </li>
+                    <li>3. Router组件： 包裹整个应用</li>
+                    <li>4. Link 组件：to 路由的入口（路由入口）</li>
+                    <li>5. Route 组件：配置规则 和 要展示的组件（路由出口） </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="three">react路由 - Router组件</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>1. 用法： 包裹整个应用， 一个React应用只需要使用一次</li>
+                    <li>
+                        2. 分类： 
+                        <div style="text-indent: 20px">
+                            HashRouter 和 BrowerRouter
+                        </div>
+                    </li>
+                    <li>3. HashRouter： 使用url的哈希值实现</li>
+                    <li>4. BrowerRouter：推荐， h5的history api实现</li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="four">react路由 - Link组件</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>1. 用法： 用于指定导航链接（a标签）</li>
+                    <li>
+                        2. to属性： 
+                        <div style="text-indent: 20px">
+                            浏览器地址栏中的pathname
+                        </div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="five">react路由 - Route组件</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>1. 用法： 指定路由展示组件相关信息</li>
+                    <li>2. path属性： 路由规则</li>
+                    <li>3. component属性： 展示的组件</li>
+                </ul>
+            </article>
+        </section>
+
+        <section>
+            <h2 class="title"> III.  react路由 - 执行过程</h2>
+            <article>
+                <h4 class="detail-title">
+                    <span id="six">react路由 - 执行过程</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li> 1. 点击link组件， 修改浏览器地址栏中的url </li>
+                    <li> 2. react路由监听到地址栏中url 的变化 </li>
+                    <li> 3. react路由内部遍历所有Router组件, 使用路由规则与pathname 进行匹配 </li>
+                </ul>
+            </article>
+        </section>
+
+        <section>
+            <h2 class="title"> IV. react路由 - 编程式导航</h2>
+            <article>
+                <h4 class="detail-title">
+                    <span id="seven">react路由 - 编程式导航</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>1. 定义： <span style="color: red"> 通过js代码来实现页面跳转</span> </li>
+                    <li>2. 使用： 
+                        <div class="coding">this.props.history.push('/')</div>    
+                        <div class="coding">this.props.history.go(n)</div>    
+                    </li>
+                    <li>3. history：react路由提供的， 用于获取浏览器历史记录的相关信息</li>
+                    <li>4. push(path)： 跳转到某个页面， path 是路径 </li>
+                    <li>5. go(n)： 前进或后退到某个页面 </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="eight">react路由 - 默认路由</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>1. 定义： <span style="color: red"> path=" / "</span> </li>
+                    <li>2. 模糊匹配模式： 默认情况下 ， react路由是模糊匹配模式， 所以 / 下面所有pathname都会被匹配 </li>
+                    <li>3. 精确匹配模式： 给Route 组件添加 exact 属性， 就变成了精确匹配， 当path和pathname 完全匹配时才会展示</li>
+                </ul>
+            </article>
+        </section>
+    </div>
+</body>
+<script>
+    var isTop = document.getElementById('is-top')
+    isTop.addEventListener("click", function() {
+        window.scrollTo(0, 0)
+    })
+</script>
+
+</html>
