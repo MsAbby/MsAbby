@@ -1,0 +1,112 @@
+---
+layout: post
+title: "react 项目启动"
+subtitle: "Whether:sunny / Mood:am-normal, pm-bad / Especially: 1"
+date: 2022-10-11 14:24:00
+author: "lsm"
+header-img: "/img/banner6.jpg"
+tags:
+- 前端开发
+- 工具
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="bg">
+        <div id="is-top">top</div>
+        <div class="tips" style="display: flex; ">
+            <div style="flex: 1;">
+                <a href="#one">1. 初始化项目</a><br />
+                <a href="#two">2. 组件库-antd-mobile</a><br />
+                <a href="#three">3. yarn命令介绍</a><br />
+                <a href="#four">4. 导入react</a><br />
+                <a href="#five">5. createElement()问题</a><br />
+                <a href="#six">6. JSX - jsx学习</a><br />
+                <a href="#seven">7. JSX - 为什么脚手架可以使用jsx语法</a><br />
+                <a href="#eight">8. JSX - jsx语法注意事项</a><br />
+                <a href="#nine">9. JSX - jsx 嵌入js 表达式</a><br />
+            </div>
+            <div style="flex: 1;">
+                <a href="#ten">10. JSX - jsx 条件渲染 、列表渲染 、 样式处理</a><br />
+                <a href="#eleven">11. 组件化 - 组件的特点</a><br />
+                <a href="#twelve">12. 组件化 - 组件的两种创建方式</a><br/>
+                <a href="#thirteen">13. 组件化 - 组件的事件处理</a><br/>
+                <a href="#fourteen">14. 组件化- 有状态组件 和 无状态组件</a><br/>
+                <a href="#fifteen">15. 组件化-state和 setState</a><br/>
+                <a href="#sixteen">16. 组件化-事件绑定中 this的指向解决方案</a><br/>
+                <a href="#seventeen">17. 组件化 - 表单处理</a><br/>
+            </div>
+        </div>
+
+        <section>
+            <h2 class="title"> I. 项目搭建</h2>
+            <article>
+                <h4 class="detail-title">
+                    <span id="one">初始化项目</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 初始化项目： npx create-react-app 项目名
+                    </li>
+                    <li>
+                        2. 启动项目： <span style="color: red">npm start</span>
+                    </li>
+                    <li>
+                        3. manifest.json文件：  <span style="color: red">pwa 应用的元数据</span>
+                    </li>
+                    <li>
+                        4. serviceWorker.js文件：  <span style="color: red">p用来实现pwa(可选)</span>
+                    </li>
+                    <li>
+                        5. 调整目录： 
+                        <div class="coding">
+                            src/ <br/>
+                                assets/  资源 <br/>
+                                components/<br/>
+                                pages/<br/>
+                                utils/   工具<br/>
+                                App.js 根组件<br/>
+                                index.css 全局样式<br/>
+                                index.js  项目入口文件<br/>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="two">组件库-antd-mobile</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 安装： npm install  antd-mobile
+                    </li>
+                    <li>
+                        2. 引入： <span style="color: red">import { Button } from 'antd-mobile</span>
+                    </li>
+                    <li>
+                        3. 渲染组件：
+                    </li>
+                    <li>
+                        4. index.js 导入样式：  import 'antd-mobile/dist/antd-mobile/css'
+                    </li>
+                </ul>
+            </article>
+        </section>
+    </div>
+</body>
+<script>
+    var isTop = document.getElementById('is-top')
+    isTop.addEventListener("click", function() {
+        window.scrollTo(0, 0)
+    })
+</script>
+</html>
