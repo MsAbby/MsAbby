@@ -32,8 +32,8 @@ tags:
                 <a href="#five">5. 页面-两种布局页面</a><br />
                 <a href="#six">6. 页面-嵌套路由</a><br />
                 <a href="#seven">7. 页面-实现tabbar</a><br />
-                <a href="#eight">8. JSX - jsx语法注意事项</a><br />
-                <a href="#nine">9. JSX - jsx 嵌入js 表达式</a><br />
+                <a href="#eight">8. 页面-实现首页</a><br />
+                <a href="#nine">9. 功能-实现地理位置定位</a><br />
             </div>
             <div style="flex: 1;">
                 <a href="#ten">10. JSX - jsx 条件渲染 、列表渲染 、 样式处理</a><br />
@@ -177,6 +177,7 @@ tags:
                         <div style="text-indent: 30px;">b. 父组件中， 添加Route作为子组件出口</div>
                         <div style="text-indent: 30px;">c. 子路由的path， 以父路由的path开头（父展示，子才会展示）</div>
                         <div style="text-indent: 30px;">d. 子路由pathname值修改为对应的值</div>
+                        <div style="text-indent: 30px;">e. / 重定向到首页</div>
                     </li>
                 </ul>
             </article>
@@ -196,6 +197,76 @@ tags:
                         <div style="text-indent: 30px;">b. 修改图标</div>
                         <div style="text-indent: 30px;">c. 修改文字颜色</div>
                         <div style="text-indent: 30px;">d. 修改图标</div>
+                        <div style="text-indent: 30px;">e. 刷新时要保证选中的高亮</div>
+                    </li>
+                    <li>
+                        3. 最优代码：
+                        <div style="text-indent: 30px;">a. 菜单数据： 单独提取</div>
+                        <div style="text-indent: 30px;">b. map数据遍历item</div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="eight">页面-实现首页</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 轮播图Swiper步骤：
+                        <div style="text-indent: 30px;">a. Swiper组件： 打开antd-mobile的Swiper组件（信息展示）</div>
+                        <div style="text-indent: 30px;">b. 拷贝代码： 拷贝核心代码到 Home组件中</div>
+                        <div style="text-indent: 30px;">c. 存在问题： 不会自动播放 以及 从其他路径返回时，高度不够</div>
+                        <div style="text-indent: 30px;">d. 原因： 轮播图数据是动态加载的，加载完成前后轮播图数量不一致</div>
+                        <div style="text-indent: 30px;">e. 解决方案-1：  在state 中添加表示数轮播图加载完成的数据, 加载完成变成true， 满足这个条件才加载轮播图</div>
+                    </li>
+                    <li>
+                        2. 导航栏目flex布局步骤：
+                        <div style="text-indent: 30px;">a. Swiper组件： 打开antd-mobile的Grid组件</div>
+                        <div style="text-indent: 30px;">b. 拷贝代码： 拷贝核心代码到 Home组件中</div>
+                    </li>
+                    <li>
+                        3. 安装sass： 
+                        <div style="text-indent: 30px;">a. 安装： css-loader, style-loader, sass-loader, node-sass</div>
+                        <div style="text-indent: 30px;">b. 作用：将sass 文件编译成css文件</div>
+                    </li>
+                    <li>
+                        4. 顶部搜索： 
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="nine">功能-实现地理位置定位</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. h5中的地理位置api: navagator.geolocation提供经纬度
+                        <div style="text-indent: 30px;">a.谁提供的： navagator.geolocation对象提供</div>
+                        <div style="text-indent: 30px;">b. 获取：  getCurrentPosition（）方法获取</div>
+                        <div style="text-indent: 30px;" class="coding">
+                            navagator.geolocation. getCurrentPosition（ position => {<br/>
+                                // position  表示当前的位置信息： 包含经度和纬度<br/>
+                            }）<br/>
+                        </div>
+                    </li>
+                    <li>
+                        2. 百度地图/高德地图 的 api：
+                        <div style="text-indent: 30px;">a. 开发文档/web开发/javascript api： 打开antd-mobile的Grid组件</div>
+                        <div style="text-indent: 30px;">b. 开发指南： 
+                            <div style="text-indent: 60px;">1. 申请百度账号：登录百度账号 / 注册百度账号 - 开发指南 </div>
+                            <div style="text-indent: 60px;">2. 创建ak密钥：控制台 - 应用管理 - 创建应用（类型： 浏览器） </div>
+                            <div style="text-indent: 60px;">3. 在index.html中引入百度地图api： </div>
+                            <div style="text-indent: 60px;">4. 全局样式修改： height: 100% </div>
+                            <div style="text-indent: 60px;">5. 新建地图组件：  Map.js </div>
+                            <div style="text-indent: 60px;">6. 新建map实例：  const map=new window.BMapGL.Map('container')</div>
+                            <div style="text-indent: 60px;">7. 设置中心点坐标：  const point=new window.BMapGL.Point(116.404, 39.915)</div>
+                            <div style="text-indent: 60px;">8. 初始化地图： map.centerAndZoom(point, 15)</div>
+                        </div>
+                        <div style="text-indent: 30px;">c. 获取城市定位： 
+                            <div style="text-indent: 60px;">1. 获取ip定位：const city = new window.BMapGL.LocalCity()</div>
+                            <div style="text-indent: 60px;">2. 获取当前城市： city.get( res => { console.log(res.name )}) </div>
+                            <div style="text-indent: 60px;">3. 调用服务器接口： 获取对应城市信息</div>
+                        </div>
                     </li>
                 </ul>
             </article>
