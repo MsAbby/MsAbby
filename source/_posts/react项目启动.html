@@ -27,11 +27,11 @@ tags:
             <div style="flex: 1;">
                 <a href="#one">1. 初始化项目</a><br />
                 <a href="#two">2. 组件库-antd-mobile</a><br />
-                <a href="#three">3. yarn命令介绍</a><br />
-                <a href="#four">4. 导入react</a><br />
-                <a href="#five">5. createElement()问题</a><br />
-                <a href="#six">6. JSX - jsx学习</a><br />
-                <a href="#seven">7. JSX - 为什么脚手架可以使用jsx语法</a><br />
+                <a href="#three">3. 路由引入</a><br />
+                <a href="#four">4. 样式调整</a><br />
+                <a href="#five">5. 页面-两种布局页面</a><br />
+                <a href="#six">6. 页面-嵌套路由</a><br />
+                <a href="#seven">7. 页面-实现tabbar</a><br />
                 <a href="#eight">8. JSX - jsx语法注意事项</a><br />
                 <a href="#nine">9. JSX - jsx 嵌入js 表达式</a><br />
             </div>
@@ -97,6 +97,105 @@ tags:
                     </li>
                     <li>
                         4. index.js 导入样式：  import 'antd-mobile/dist/antd-mobile/css'
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="three">路由引入</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 安装： yarn add react-router-dom
+                    </li>
+                    <li>
+                        2. index.js中引入： Router 、Route、 Link
+                    </li>
+                    <li>
+                        3. 创建组件： Home/index.js  CityList/index.js
+                    </li>
+                    <li>
+                        4. Route组件配置
+                        <div class="coding">
+                            {/* 配置导航菜单 */} <br/>
+                            《Link to='/home'》 首页 《Link》"<br/>
+                            《Link to='/city'》 城市选项 《/Link》<br/>
+                            {/* 配置路由 */}<br/>
+                            《Route path='/home' component={Home} 《/Route》<br/>
+                            《Route path='/city' component={CityList} 《/Route》<br/>
+                        </div>
+                    </li>
+                    <li>
+                        5. 新版本配置：
+                        <div style="text-indent: 30px;">在路由器包裹路由之前需要先在路由外侧添加Routes组件</div>
+                        <div style="text-indent: 30px;">路由中的component需要改为element</div>
+                        <div style="text-indent: 30px;">element后面需要写成组件标签形式</div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="four">样式调整</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 修改页面标题
+                    </li>
+                    <li>
+                        2. 基础样式调整
+                    </li>
+                </ul>
+            </article>
+        </section>
+
+        <section>
+            <h2 class="title"> II. 项目整体布局</h2>
+            <article>
+                <h4 class="detail-title">
+                    <span id="five">页面-两种布局页面</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 有tabbar的页面： 首页、找房、资讯、我的 - 内部切换路由 - 嵌套路由
+                    </li>
+                    <li>
+                        2. 没有tabbar的页面：城市列表
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="six">页面-嵌套路由</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 定义： 路由内部包含路由
+                    </li>
+                    <li>
+                        2. 步骤：
+                        <div style="text-indent: 30px;">a. 创建子组件</div>
+                        <div style="text-indent: 30px;">b. 父组件中， 添加Route作为子组件出口</div>
+                        <div style="text-indent: 30px;">c. 子路由的path， 以父路由的path开头（父展示，子才会展示）</div>
+                        <div style="text-indent: 30px;">d. 子路由pathname值修改为对应的值</div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="seven">页面-实现tabbar</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 步骤：
+                        <div style="text-indent: 30px;">a. tabbar组件： 打开antd-mobile的tabbar组件</div>
+                        <div style="text-indent: 30px;">b. 拷贝代码： 拷贝核心代码到 Home组件中</div>
+                    </li>
+                    <li>
+                        2. 调整：
+                        <div style="text-indent: 30px;">a. 修改页面标题</div>
+                        <div style="text-indent: 30px;">b. 修改图标</div>
+                        <div style="text-indent: 30px;">c. 修改文字颜色</div>
+                        <div style="text-indent: 30px;">d. 修改图标</div>
                     </li>
                 </ul>
             </article>
