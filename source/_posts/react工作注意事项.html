@@ -25,7 +25,7 @@ tags:
         <div id="is-top">top</div>
         <div class="tips" style="display: flex; ">
             <div style="flex: 1;">
-                <a href="#one">1. 组件通信 - props</a><br />
+                <a href="#one">1. 调用setState()时</a><br />
             </div>
             <div style="flex: 1;">
                 <a href="#ten">10. JSX - jsx 条件渲染 、列表渲染 、 样式处理</a><br />
@@ -61,6 +61,63 @@ tags:
                 <ul class="ul-detail">
                     <li>
                         <h6>react脚手架中， 全局对象需要使用window 来访问， 否则会造成eslint校验错误</h6>
+                    </li>
+                </ul>
+            </article>
+        </section>
+        <section>
+            <h2 class="title">III. react hooks</h2>
+            <article>
+                <h4 class="detail-title">
+                    <span id="three">useState </span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        <h6>1. 使用useState更新数组，无法更新问题: 引用数据类型，先拷贝后更新</h6>
+                        <div>const [cityList, setCityList] = useState({})</div>
+                        <div>setCityList({...cityList, ...result.cityList})</div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="four">useEffect </span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        <h6>1. Hooks 18 useEffect 执行2次或多次使用useState更新数组: 使用useRef</h6>
+                        <div>const renderRef = useRef(true)</div>
+                        <div>if (renderRef.current) { renderRef.current = false return } </div>
+                    </li>
+                </ul>
+            </article>
+        </section>
+        <section>
+            <h2 class="title">III. react css样式覆盖</h2>
+            <article>
+                <h4 class="detail-title">
+                    <span id="five">组件化 - 组件间-样式覆盖的问题-CSS IN JS</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>1. 原因： 代码执行，加载到同一个项目中， 同名的样式就会相互影响</li>
+                    <li>2. 解决方式1： 手动处理-取不同的类名 </li>
+                    <li>3. 解决方式2: CSS IN JS</li>
+                    <li>4. CSS IN JS: 用js 编写css的统称，解决css样式冲突，覆盖的问题
+                        <div style="text-indent: 30px;">
+                            a. CSS Modules: 推荐-react脚手架已经集成，可以直接使用
+                            <div style="text-indent: 60px;">1. 定义对CSS类名重命名（局部作用域）</div>
+                            <div style="text-indent: 60px;">2. 实现方式：webpack的css-loader: 类名变成全局唯一的名字 </div>
+                            <div style="text-indent: 60px;">3. 命名方式：BEM（block, element, modifier）; react中： filename_classname_hash-指定classname就成</div>
+                            <div style="text-indent: 60px;">4. 使用：首先-创建[name].module.css； 其次-导入该样式文件； 最后-通过style.样式名，设置样式</div>
+                            <div style="text-indent: 60px;" class="coding">
+                                import styles from './index.module.css'; // css module导入 <br/>
+                                // 注意： 写法-单个类名设置样式， 不使用嵌套
+                                // 注意： 组件库已有的全局样式： 需要使用 ：global来指定 :global(.am-navbar-title)
+                            </div>
+                        </div>
+                        <div style="text-indent: 30px;">
+                            b. style-component
+                        </div>
                     </li>
                 </ul>
             </article>

@@ -36,10 +36,10 @@ tags:
                 <a href="#nine">9. 功能-实现地理位置定位</a><br />
             </div>
             <div style="flex: 1;">
-                <a href="#ten">10. JSX - jsx 条件渲染 、列表渲染 、 样式处理</a><br />
-                <a href="#eleven">11. 组件化 - 组件的特点</a><br />
-                <a href="#twelve">12. 组件化 - 组件的两种创建方式</a><br/>
-                <a href="#thirteen">13. 组件化 - 组件的事件处理</a><br/>
+                <a href="#ten">10. 功能-实现城市列表</a><br />
+                <a href="#eleven">11. 优化-场列表性能优化</a><br />
+                <a href="#twelve">12. 组件化 - 顶部导航栏组件化</a><br/>
+                <a href="#thirteen">13. 组件间-样式覆盖的问题-CSS IN JS</a><br/>
                 <a href="#fourteen">14. 组件化- 有状态组件 和 无状态组件</a><br/>
                 <a href="#fifteen">15. 组件化-state和 setState</a><br/>
                 <a href="#sixteen">16. 组件化-事件绑定中 this的指向解决方案</a><br/>
@@ -260,12 +260,140 @@ tags:
                             <div style="text-indent: 60px;">5. 新建地图组件：  Map.js </div>
                             <div style="text-indent: 60px;">6. 新建map实例：  const map=new window.BMapGL.Map('container')</div>
                             <div style="text-indent: 60px;">7. 设置中心点坐标：  const point=new window.BMapGL.Point(116.404, 39.915)</div>
-                            <div style="text-indent: 60px;">8. 初始化地图： map.centerAndZoom(point, 15)</div>
+                            <div style="text-indent: 60px;">8. 初始化地图-放大地图： map.centerAndZoom(point, 11)</div>
                         </div>
                         <div style="text-indent: 30px;">c. 获取城市定位： 
                             <div style="text-indent: 60px;">1. 获取ip定位：const city = new window.BMapGL.LocalCity()</div>
                             <div style="text-indent: 60px;">2. 获取当前城市： city.get( res => { console.log(res.name )}) </div>
                             <div style="text-indent: 60px;">3. 调用服务器接口： 获取对应城市信息</div>
+                        </div>
+                        <div style="text-indent: 30px;">d. 地址解析服务： 逆/地址解析
+                            <div style="text-indent: 60px;">1. 创建地址解析器实例：const myGeo = new window.BMapGL.Geocoder()</div>
+                            <div style="text-indent: 60px;">2. 解析结果展示在地图上： myGeo.getPoint('', function(point)) </div>
+                        </div>
+                        <div style="text-indent: 30px;">e. 文本覆盖物： 事例demo/覆盖物事例
+                            <div style="text-indent: 60px;">1. 创建Label实例对象：const label = new window.BMapGL.Label(“文本信息”， { position: point, offset: new window.BMapGL.size(-35， -35) })</div>
+                            <div style="text-indent: 60px;">2. 设置样式：  label.setStyle({}) </div>
+                            <div style="text-indent: 60px;">3. 添加到地图中：  map.addOverlay(label) </div>
+                        </div>
+                        <div style="text-indent: 30px;">f. 绘制房源覆盖物：
+                            <div style="text-indent: 60px;">1. setContent传入html： label.setContent(`<div class="">结构</div>`) </div>
+                            <div style="text-indent: 60px;">2. 设置样式：  label.setStyle({}) </div>
+                            <div style="text-indent: 60px;">3. 获取点击事件：  label.addEventLisenter('click', () => {}) </div>
+                            <div style="text-indent: 60px;">3. 添加到地图中：  map.addOverlay(label) </div>
+                        </div>
+                        <div style="text-indent: 30px;">g. 点击覆盖物
+                            <div style="text-indent: 60px;">1. 放大地图 </div>
+                            <div style="text-indent: 60px;">2. 获取数据，渲染下一级覆盖物</div>
+                            <div style="text-indent: 60px;">3. 区、镇： 单机会清除现有覆盖物，创建新的覆盖物</div>
+                            <div style="text-indent: 60px;">4. 小区： 不清楚覆盖物。异动地图，展示小区的房源列表</div>
+                        </div>
+                        <div style="text-indent: 30px;">h. 渲染所有区的房源覆盖物
+                            <div style="text-indent: 60px;">1. 获取房源数据 </div>
+                            <div style="text-indent: 60px;">2. 遍历数据， 创建覆盖物， 给一个唯一标识</div>
+                            <div style="text-indent: 60px;">3. 添加点击事件， 获得唯一标识</div>
+                            <div style="text-indent: 60px;">4. 放大地图（级别变成13），用clearOverlays方法清除当前覆盖物（加一个定时器）</div>
+                        </div>
+                        <div style="text-indent: 30px;">i. 移动位置
+                            <div style="text-indent: 60px;">1. 获取点击项目 ：e.changedTouches[0]</div>
+                            <div style="text-indent: 60px;">1. 移动 ： map.panBy(x, y)</div>
+                            <div style="text-indent: 60px;">2. 垂直位置： (window.innerHeight - 330) / 2 - target.clientY</div>
+                            <div style="text-indent: 60px;">3. 水平位置： (window.innerWidth / 2 - target.clientX</div>
+                            <div style="text-indent: 60px;">4. 放大地图（级别变成13），用clearOverlays方法清除当前覆盖物（加一个定时器）</div>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="ten">功能-实现城市列表</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 导航栏引入： 
+                        <div style="text-indent: 30px;">a.Swiper组件： 打开antd-mobile的navbar组</div>
+                        <div style="text-indent: 30px;">b. 改变样式背景： 自己加一个className</div>
+                    </li>
+                    <li>
+                        2. 按字母展示城市：
+                        <div style="text-indent: 30px;">a. 改写数据格式： { a: [{}, {}], b: [{}], c: []...}</div>
+                        <div style="text-indent: 30px;">b. 右侧索引格式： ['a', 'b', 'c', 'd']</div>
+                        <div style="text-indent: 30px;">c. 步骤： 
+                            <div style="text-indent: 60px;">1. 遍历数据</div>
+                            <div style="text-indent: 60px;">2. 获取每个城市的首字母: const first = char.substring(0, 1)</div>
+                            <div style="text-indent: 60px;">3. 首字母按顺序排列: cityIndex.sort()</div>
+                            <div style="text-indent: 60px;">4. push 数据</div>
+                            <div style="text-indent: 60px;">5. 热门城市接口获取： hot添加到字母数组中， hot对应的数据添加到citylist中</div>
+                            <div style="text-indent: 60px;">6. 定位城市： 封装函数， utils中封装函数获取定位城市，还要判断localstorage中是否有城市及其数据</div>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="eleven">优化-场列表性能优化</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>1. 定义： 大型列表和表哥数据， 会导致页面卡顿， 大量dom节点会重绘重排 </li>
+                    <li>2. 优化方案： 懒渲染和可视区域渲染 </li>
+                    <li>
+                        3. 懒渲染：
+                        <div style="text-indent: 30px;">a. 用于场景： 移动端</div>
+                        <div style="text-indent: 30px;">b. 原理： 每次只渲染一部分， 等渲染的数据将滚动完时，再渲染下面的部分</div>
+                        <div style="text-indent: 30px;">c. 优点：速度快（1000条左右的数据）  </div>
+                        <div style="text-indent: 30px;">d. 缺点：数据量特大时，页面依旧存在大量dom, 占的内存过多，导致页面卡顿  </div>
+                    </li>
+                    <li>
+                        4. 可视区域渲染：
+                        <div style="text-indent: 30px;">a. 用于场景： 一次性展示大量数据（微博、聊天等）</div>
+                        <div style="text-indent: 30px;">b. 原理： 只渲染页面可视区域的列表项， 非可视区域数据“不渲染”（额外加载一点数据）， 滚动时动态更新</div>
+                    </li>
+                    <li>
+                        5. 可视区域渲染：react-virtualized: 高效渲染大量数据
+                        <div style="text-indent: 30px;">a. 安装：  yarn add react-virtualized</div>
+                        <div style="text-indent: 30px;">b. 入口导入： import ' react-virtualized/style.css'</div>
+                        <div style="text-indent: 30px;">c. list组件占满屏幕： 导入AutoSizer组件： 拿到暴露出来的height和width, 设置在上面</div>
+                        <div style="text-indent: 30px;">d. 右侧索引： 点击高亮， 城市列表滚动-对应的城市高亮</div>
+                        <div style="text-indent: 60px;">1. List组件 的 onRowsRendered: 滚动时，拿到页面中渲染行的信息（startIndex）</div>
+                        <div style="text-indent: 60px;">2. 点击时： 滚动到对应城市： 调用scrollToRow方法，用于安全滚动到指定位置（必须可见的，出现过就成）</div>
+                        <div style="text-indent: 60px;">3. 设置List组件scrollToAlignment 配置项为start， 保证被点击出现在页面顶部</div>
+                        <div style="text-indent: 60px;">4. 索引无法正确定位时， 用list组件measureAllRows ，提前计算所有行高度，让scrollToRow方法精确跳转</div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="twelve">组件化 - 顶部导航栏组件化</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>1. 公共代码提取</li>
+                    <li>2. 添加prop-types校验 </li>
+                    <li>3. 事件属性值的传递</li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="thirteen">组件化 - 组件间-样式覆盖的问题-CSS IN JS</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>1. 原因： 代码执行，加载到同一个项目中， 同名的样式就会相互影响</li>
+                    <li>2. 解决方式1： 手动处理-取不同的类名 </li>
+                    <li>3. 解决方式2: CSS IN JS</li>
+                    <li>4. CSS IN JS: 用js 编写css的统称，解决css样式冲突，覆盖的问题
+                        <div style="text-indent: 30px;">
+                            a. CSS Modules: 推荐-react脚手架已经集成，可以直接使用
+                            <div style="text-indent: 60px;">1. 定义对CSS类名重命名（局部作用域）</div>
+                            <div style="text-indent: 60px;">2. 实现方式：webpack的css-loader: 类名变成全局唯一的名字 </div>
+                            <div style="text-indent: 60px;">3. 命名方式：BEM（block, element, modifier）; react中： filename_classname_hash-指定classname就成</div>
+                            <div style="text-indent: 60px;">4. 使用：首先-创建[name].module.css； 其次-导入该样式文件； 最后-通过style.样式名，设置样式</div>
+                            <div style="text-indent: 60px;" class="coding">
+                                import styles from './index.module.css'; // css module导入 <br/>
+                                // 注意： 写法-单个类名设置样式， 不使用嵌套
+                                // 注意： 组件库已有的全局样式： 需要使用 ：global来指定 :global(.am-navbar-title)
+                            </div>
+                        </div>
+                        <div style="text-indent: 30px;">
+                            b. style-component
                         </div>
                     </li>
                 </ul>
