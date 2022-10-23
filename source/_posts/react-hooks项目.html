@@ -1,0 +1,184 @@
+---
+layout: post
+title: "react 项目启动"
+subtitle: "Whether:sunny / Mood:am-normal, pm-bad / Especially: 1"
+date: 2022-10-11 14:24:00
+author: "lsm"
+header-img: "/img/banner6.jpg"
+tags:
+- 前端开发
+- 工具
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="bg">
+        <div id="is-top">top</div>
+        <div class="tips" style="display: flex; ">
+            <div style="flex: 1;">
+                <a href="#one">1. 初始化项目</a><br />
+                <a href="#two">2. 组件库-antd-mobile</a><br />
+               
+               
+            </div>
+            <div style="flex: 1;">
+                <a href="#eight">8. 页面-实现首页</a><br />
+                <a href="#nine">9. 功能-实现地理位置定位</a><br />
+               
+            </div>
+        </div>
+
+        <section>
+            <h2 class="title"> I. 项目搭建</h2>
+            <article>
+                <h4 class="detail-title">
+                    <span id="one">初始化项目</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 初始化项目： npx create-react-app 项目名 --template typescript
+                    </li>
+                    <li>
+                        2. 启动项目： <span style="color: red">npm start</span>
+                    </li>
+                    <li>
+                        3. 相对路径： tsconfig.js 中配置 compilerOptions: { baseseUrl: './src'}
+                    </li>
+                    <li>
+                        4. 格式化问题：  保证所有人采用统一配置 - prettier
+                        <div style="text-indent: 30px;">a. 安装： npm install --dev --exact prettier</div>
+                        <div style="text-indent: 30px;">b. 新建文件： echo {}> .prettierrc.json</div>
+                        <div style="text-indent: 30px;">c. 新建不需要格式化的文件： echo {}> .prettierignore.json</div>
+                    </li>
+                    <li>
+                        5. 自动格式化： pre-commit Hooks
+                        <div style="text-indent: 30px;">a. 安装： npx mrm@2 lint-staged</div>
+                        <div style="text-indent: 30px;">b. 好处： 安装了husky-方便管理git hooks的工具</div>
+                        <div style="text-indent: 30px;">c. 好处： 安装了lint-staged</div>
+                        <div style="text-indent: 30px;">d. 避免和eslint冲突：安装： npm i eslint-config-prettier -D</div>
+                        <div style="text-indent: 30px;">e. prettier规则覆盖前面eslint规则：eslintConfig: { extends: ["prettier"]} </div>
+                    </li>
+                    <li>
+                        6. git commit 格式化： commitlint
+                        <div style="text-indent: 30px;">a. 定义： 检查提交格式是否规范， 不规范提交不成功</div>
+                        <div style="text-indent: 30px;">b. 安装： npm install --save-dev @commitlint/config-conventional @commitlint/cli</div>
+                        <div style="text-indent: 30px;">c. 创建文件： echo "module.exports = {extends: ['@commitlint/config-conventional']};" > commitlint.config.js</div>
+                        <div style="text-indent: 30px;">d. 配置： "husky": {"hooks": {"commit-msg": "commitlint -e $HUSKY_GIT_PARAMS" }}</div>
+                        <div style="text-indent: 30px;">e. prettier规则覆盖前面eslint规则：eslintConfig: { extends: ["prettier"]} </div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="two">mock方案</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 代码入侵： 代码中写死mock数据 / 引入本地json文件 
+                        <div style="text-indent: 30px;">缺点： 效果差， 环境切换麻烦</div>
+                    </li>
+                    <li>
+                        2. Mock.js: 
+                        <div style="text-indent: 30px;">缺点： 动态生成的假数据，无法真实反映</div>
+                        <div style="text-indent: 30px;">缺点： 只支持ajax</div>
+                        <div style="text-indent: 30px;">优点： 与前端代码分离</div>
+                        <div style="text-indent: 30px;">优点： 动态生成数据</div>
+                    </li>
+                    <li>
+                        3. 接口管理工具： rap, swagger, moco, yapl
+                        <div style="margin-left: 30px;">优点：功能强大， 可靠</div>
+                        <div style="margin-left: 30px;">缺点：依赖后端， 配置复杂</div>
+                    </li>
+                    <li>
+                        4. json-server: 
+                        <div style="margin-left: 30px;">a. 优点：配置简单， 启动快（0-30s）， 自定义程度高， 增删改查真实模拟</div>
+                        <div style="margin-left: 30px;">b. 缺点：不随后台api修改而修改</div>
+                        <div style="margin-left: 30px;">c. 全局安装：sudo npm i json-server -g</div>
+                        <div style="margin-left: 30px;">c. 安装：npm i json-server -D</div>
+                        <div style="margin-left: 30px;">d. 创建文件：__json_server_mock__ / db.json</div>
+                        <div style="margin-left: 30px;">e. 启动：json-server --watch db.json</div>
+                        <div style="margin-left: 30px;">f. 启动：json-server --watch db.json</div>
+                        <div style="margin-left: 30px;">g. postman：把生成的地址粘贴到postman中发送请求</div>
+                        <div style="margin-left: 30px;">h. package.json中配置： script: { "json-server": json-server 文件名/db.json --watch}</div>>
+                    </li>
+                    <li>
+                        4.  qs: 
+                        <div style="margin-left: 30px;">a. 定义： 转成地址栏</div>
+                        <div style="margin-left: 30px;">c. 安装：npm i qs</div>
+                        <div style="margin-left: 30px;">d. 使用： qs.stringify(parmas)</div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="three">custom hook 自定义hook： 必须以use开头</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. useMount
+                    </li>
+                    <li>
+                        2. useDebounce
+                    </li>
+                </ul>
+            </article>
+        </section>
+        <section>
+            <h2 class="title"> II. 登录页面</h2>
+            <article>
+                <h4 class="detail-title">
+                    <span id="one">json-server： 添加中间件改为非resful接口</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 新建文件： __json_server_mock__ / middlewares.js
+                    </li>
+                    <li>
+                        2. 启动项目： script: { "json-server": json-server 文件名/db.json --watch --port 3001 --middlewares ./文件名/middlewares.js}
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="one">连接真实服务端</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 安装： npx imooc-jira-tool
+                    </li>
+                    <li>
+                        2. 引入： index.tsx中引入： import { loadDevTools } from 'jira-dev-tool';
+                    </li>
+                    <li>
+                        3. 包裹使用： loadDevTools（（）=> { root.render(}）;
+                    </li>
+                    <li>
+                        4. 重要提示： 如果报错，则  npx msw init public
+                    </li>
+                    <li>
+                        5. 删除json-server:  // "json-server": "json-server __json_server_mock__/db.json --watch --port 3001 --middlewares ./__json_server_mock__/middlewares.js"
+                    </li>
+                    <li>
+                        6. 问题：env 的名字一定要是 - REACT_APP_API_URL = http://localhost:3001
+                    </li>
+                </ul>
+            </article>
+        </section>
+    </div>
+</body>
+<script>
+    var isTop = document.getElementById('is-top')
+    isTop.addEventListener("click", function() {
+        window.scrollTo(0, 0)
+    })
+</script>
+</html>
