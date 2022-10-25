@@ -145,6 +145,15 @@ tags:
                     <li>
                         2. 启动项目： script: { "json-server": json-server 文件名/db.json --watch --port 3001 --middlewares ./文件名/middlewares.js}
                     </li>
+                    <li>
+                        3. 登录页面有： 登录、注册、登出， 调用接口后要存储到localstrage中
+                    </li>
+                    <li>
+                        4. 存储信息：  信息存储在useContext全局变量中
+                    </li>
+                    <li>
+                        5. 封装fetch：
+                    </li>
                 </ul>
             </article>
             <article>
@@ -169,6 +178,118 @@ tags:
                     </li>
                     <li>
                         6. 问题：env 的名字一定要是 - REACT_APP_API_URL = http://localhost:3001
+                    </li>
+                </ul>
+            </article>
+        </section>
+        <section>
+            <h2 class="title"> III. 封装fetch</h2>
+            <article>
+                <h4 class="detail-title">
+                    <span id="one">封装fetch： </span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 统一携带token
+                    </li>
+                    <li>
+                        2. 启动项目： script: { "json-server": json-server 文件名/db.json --watch --port 3001 --middlewares ./文件名/middlewares.js}
+                    </li>
+                    <li>
+                        3. 登录页面有： 登录、注册、登出， 调用接口后要存储到localstrage中
+                    </li>
+                    <li>
+                        4. 存储信息：  信息存储在useContext全局变量中
+                    </li>
+                    <li>
+                        5. 封装fetch：
+                    </li>
+                </ul>
+            </article>
+        </section>
+        <section>
+            <h2 class="title"> IV. 布局方面</h2>
+            <article>
+                <h4 class="detail-title">
+                    <span id="one">安装antd </span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 安装： npm install antd(注意： 在安装antd后重新安装imooc-jira-tool就好了)
+                    </li>
+                    <li>
+                        2. 引入： import 'antd/dist/antd.less';
+                    </li>
+                    <li>
+                        3. 安装craco(覆盖框架的默认配置): npm install @craco/craco --save  npm install craco-less
+                    </li>
+                    <li>
+                        4. scripts: 替换 react-scripts 为craco
+                    </li>
+                    <li>
+                        5. 根文件夹下创建： craco.confg.js - antdesign官网粘贴内容
+                    </li>
+                </ul>
+            </article>
+        </section>
+        <section>
+            <h2 class="title"> V. CSS IN JS</h2>
+            <article>
+                <h4 class="detail-title">
+                    <span id="one">CSS缺陷 </span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 没有模块化概念， 缺乏模块组织
+                    </li>
+                    <li>
+                        2. 缺乏作用域
+                    </li>
+                    <li>
+                        3. 隐式依赖：不好追踪
+                    </li>
+                    <li>
+                        4. 没有变量
+                    </li>
+                    <li>
+                        5. 标签和css是耦合的
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="one">CSS in js 方案 - Emotion</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 用法: 也支持行内样式（区别： 可以支持伪类）
+                    </li>
+                    <li>
+                        2. 安装： npm i @emotion/react @emotion/styled
+                    </li>
+                    <li>
+                        3. 引入： import styled from '@emotion/styled'
+                    </li>
+                    <li>
+                        4. vscode安装插件： vscode-styled-component
+                    </li>
+                    <li>
+                        5. 使用： 将 style 和 html元素组合成一个组件渲染
+                        <div style="margin-left: 30px">
+                            html元素： const newComponent = styled.div` width: 30px; height: 20px`
+                        </div>
+                        <div style="margin-left: 30px">
+                            组件Card元素： const newComponent = styled.(Card)` width: 30px; height: 20px`
+                        </div>
+                    </li>
+                    <li>
+                        6. svg: import {ReactComponent as SoftwareLogo} from '../assets/imgage/xx.svg'
+                    </li>
+                    <li>
+                        7. grid布局(二维布局，布局优先)： grid-template-area grid-template-row grid-template-column
+                    </li>
+                    <li>
+                        8. flex布局(内容优先)：
                     </li>
                 </ul>
             </article>
